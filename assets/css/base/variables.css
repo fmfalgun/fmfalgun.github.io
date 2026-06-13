@@ -1,0 +1,13 @@
+:root {
+  --black:  #0D0F0A;
+  --green:  #3D4A3E;
+  --khaki:  #8B7355;
+  --amber:  #D4882A;
+  --cream:  #E8E4D9;
+  --dim:    #5A5F52;
+  --card:   #131710;
+  --border: #2A3028;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}

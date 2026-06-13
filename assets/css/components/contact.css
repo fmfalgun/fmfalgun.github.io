@@ -1,0 +1,54 @@
+.contact-sub {
+  font-size: .9rem;
+  color: var(--dim);
+  margin-bottom: 2.5rem;
+  font-family: var(--font-mono);
+  letter-spacing: .05em;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.contact-card {
+  display: flex; flex-direction: column; gap: .4rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--green);
+  padding: 1.4rem;
+  color: var(--cream);
+  transition: border-top-color .2s, background .2s;
+}
+.contact-card:hover { background: #161A12; border-top-color: var(--amber); color: var(--cream); }
+.contact-icon { font-size: 1.2rem; color: var(--amber); }
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .15em;
+  color: var(--dim);
+}
+.contact-val { font-size: .85rem; color: var(--cream); }
+
+footer {
+  background: #080A07;
+  border-top: 1px solid var(--border);
+  padding: 1.8rem 2rem;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  letter-spacing: .15em;
+  color: var(--cream);
+}
+.footer-logo .accent { color: var(--amber); }
+.footer-copy { font-family: var(--font-mono); font-size: .62rem; color: var(--dim); letter-spacing: .08em; }
+.footer-sig  { font-family: var(--font-mono); font-size: .62rem; color: var(--green); letter-spacing: .15em; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p assets/css/base assets/css/components assets/img src/models src/views src/controllers public/docs)",
+      "Bash(rm -f style.css main.js)"
+    ]
+  }
+}

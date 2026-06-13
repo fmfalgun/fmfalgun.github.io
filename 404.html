@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Signal Lost | FM//SEC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/base/variables.css" />
+  <link rel="stylesheet" href="assets/css/base/reset.css" />
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .err-code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+      letter-spacing: .04em;
+      opacity: .15;
+      position: absolute;
+      user-select: none;
+    }
+    .err-content {
+      position: relative;
+      z-index: 1;
+    }
+    .err-label {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .25em;
+      color: var(--khaki);
+      margin-bottom: 1rem;
+    }
+    .err-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      letter-spacing: .04em;
+    }
+    .err-desc {
+      font-family: var(--font-mono);
+      font-size: .8rem;
+      color: var(--dim);
+      margin-bottom: 2.5rem;
+      letter-spacing: .05em;
+    }
+    .err-link {
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--black);
+      background: var(--amber);
+      padding: .7rem 1.8rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .err-link:hover { background: var(--cream); }
+  </style>
+</head>
+<body>
+  <span class="err-code">404</span>
+  <div class="err-content">
+    <p class="err-label">// SIGNAL LOST</p>
+    <h1 class="err-title">Target Not Found</h1>
+    <p class="err-desc">The coordinates you requested do not exist in this sector.</p>
+    <a href="/" class="err-link">RETURN TO BASE</a>
+  </div>
+</body>
+</html>

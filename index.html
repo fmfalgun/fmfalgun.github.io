@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Falgun Marothia | IoT Security Researcher</title>
+  <meta name="description" content="Falgun Marothia — Project Engineer at CDAC specialising in IoT wireless security (BLE, Wi-Fi, Zigbee), ML-based IDS, and Zero Trust architectures. M.Tech Cybersecurity, DIAT Pune." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://fmfalgun.github.io/" />
+  <meta property="og:title"       content="Falgun Marothia | IoT Security Researcher" />
+  <meta property="og:description" content="Project Engineer at CDAC — IoT wireless security research across BLE, Wi-Fi, and Zigbee. ML-based IDS, Zero Trust architecture, labeled pcap datasets." />
+  <meta property="og:image"       content="https://fmfalgun.github.io/assets/img/og-preview.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Falgun Marothia | IoT Security Researcher" />
+  <meta name="twitter:description" content="Project Engineer at CDAC — IoT wireless security, ML/IDS, Zero Trust." />
+  <meta name="twitter:image"       content="https://fmfalgun.github.io/assets/img/og-preview.png" />
+
+  <link rel="canonical" href="https://fmfalgun.github.io/" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles — MVC component split -->
+  <link rel="stylesheet" href="assets/css/base/variables.css" />
+  <link rel="stylesheet" href="assets/css/base/reset.css" />
+  <link rel="stylesheet" href="assets/css/components/nav.css" />
+  <link rel="stylesheet" href="assets/css/components/hero.css" />
+  <link rel="stylesheet" href="assets/css/components/cards.css" />
+  <link rel="stylesheet" href="assets/css/components/contact.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Falgun Marothia",
+    "jobTitle": "Project Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Centre for Development of Advanced Computing (CDAC)"
+    },
+    "url": "https://fmfalgun.github.io",
+    "email": "fmfalgunmarothia@gmail.com",
+    "sameAs": [
+      "https://github.com/fmfalgun",
+      "https://www.linkedin.com/in/falgun-marothia-52a383191/"
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Defence Institute of Advanced Technology (DIAT), Pune"
+    },
+    "knowsAbout": [
+      "IoT Security", "Wireless Security", "BLE", "Wi-Fi", "Zigbee",
+      "Machine Learning", "Intrusion Detection Systems", "Zero Trust"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <div class="nav-logo">FM<span class="accent">//</span>SEC</div>
+      <ul class="nav-links" role="list">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#publications">REPORTS</a></li>
+        <li><a href="#repositories">REPOS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="falgun_resume.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">RESUME ↗</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" aria-label="Introduction">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="grid-overlay" aria-hidden="true"></div>
+      <div class="hero-hud top-left" aria-hidden="true">
+        <span class="hud-label">STATUS</span>
+        <span class="hud-value blink">● ACTIVE</span>
+      </div>
+      <div class="hero-hud top-right" aria-hidden="true">
+        <span class="hud-label">CLEARANCE</span>
+        <span class="hud-value">RESEARCHER</span>
+      </div>
+      <div class="hero-hud bot-left" aria-hidden="true">
+        <span class="hud-label">LOC</span>
+        <span class="hud-value">CHENNAI // INDIA</span>
+      </div>
+      <div class="hero-hud bot-right" aria-hidden="true">
+        <span class="hud-label">SYS.TIME</span>
+        <span class="hud-value" id="hud-time">--:--:-- IST</span>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">CDAC — PROJECT ENGINEER</p>
+        <h1 class="hero-name">FALGUN<br /><span class="hero-name-accent">MAROTHIA</span></h1>
+        <p class="hero-tagline">
+          Securing the Wireless Edge —<br />
+          <span class="accent-text">BLE · Wi-Fi · Zigbee</span>
+        </p>
+        <div class="hero-cta-row">
+          <a href="#projects" class="btn-primary">VIEW RESEARCH</a>
+          <a href="#contact" class="btn-ghost">ESTABLISH CONTACT</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>SCROLL</span>
+        <div class="scroll-bar"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-label">[01 // ABOUT]</div>
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="section-heading">Operator Profile</h2>
+            <p>
+              Project Engineer at <strong>CDAC (Centre for Development of Advanced Computing)</strong>, specialising in IoT wireless security research under a Zero Trust / microsegmentation framework. M.Tech in Cybersecurity from <strong>DIAT (Defence Institute of Advanced Technology), Pune</strong>.
+            </p>
+            <p>
+              My work sits at the intersection of protocol-level attack research and machine learning — building labeled pcap datasets, training ML-based intrusion detection systems, and developing security modules for multi-protocol IoT environments.
+            </p>
+            <p>
+              Outside the lab: competitive programmer and Linux power user.
+            </p>
+            <div class="about-tags">
+              <span class="tag">M.Tech Cybersecurity</span>
+              <span class="tag">DIAT Pune</span>
+              <span class="tag">Zero Trust</span>
+              <span class="tag">ML/IDS</span>
+              <span class="tag">IoT Security</span>
+
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="card-header">// FIELD DATA</div>
+            <ul class="field-data">
+              <li><span class="fd-key">NAME</span><span class="fd-val">Falgun Marothia</span></li>
+              <li><span class="fd-key">ROLE</span><span class="fd-val">Project Engineer, CDAC</span></li>
+              <li><span class="fd-key">BASE</span><span class="fd-val">Chennai, Tamil Nadu</span></li>
+              <li><span class="fd-key">ORIGIN</span><span class="fd-val">Kishangarh, Ajmer, Rajasthan</span></li>
+              <li><span class="fd-key">EDU</span><span class="fd-val">M.Tech Cybersecurity — DIAT</span></li>
+              <li><span class="fd-key">FOCUS</span><span class="fd-val">Wireless IoT Security + ML</span></li>
+              <li><span class="fd-key">GITHUB</span><span class="fd-val"><a href="https://github.com/fmfalgun" target="_blank" rel="noopener noreferrer">fmfalgun ↗</a></span></li>
+              <li><span class="fd-key">LINKEDIN</span><span class="fd-val"><a href="https://www.linkedin.com/in/falgun-marothia-52a383191/" target="_blank" rel="noopener noreferrer">falgun-marothia ↗</a></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <div class="section-label">[02 // CAPABILITIES]</div>
+        <h2 class="section-heading">Skills &amp; Arsenal</h2>
+        <div class="skills-grid">
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> WIRELESS PROTOCOLS</div>
+            <ul class="skill-list">
+              <li>Wi-Fi (802.11) — Management Frame Attacks</li>
+              <li>Bluetooth / BLE — GATT Security</li>
+              <li>ZigBee (IEEE 802.15.4)</li>
+              <li>LoRa / LoRaWAN</li>
+              <li>IoT Device Security</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> SECURITY RESEARCH</div>
+            <ul class="skill-list">
+              <li>Vulnerability Assessment &amp; Penetration Testing (VAPT)</li>
+              <li>Network Security / Internet Security</li>
+              <li>Ethical Hacking</li>
+              <li>Anomaly Detection / Continuous Monitoring</li>
+              <li>Social Engineering</li>
+              <li>CTF</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> AUTH &amp; CRYPTOGRAPHY</div>
+            <ul class="skill-list">
+              <li>Kerberos — Authentication Protocol</li>
+              <li>Blockchain-Based Authentication</li>
+              <li>Hyperledger Fabric</li>
+              <li>Asymmetric Cryptography / RSA</li>
+              <li>Cryptography</li>
+              <li>OpenZiti / Zero Trust</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> PROGRAMMING</div>
+            <ul class="skill-list">
+              <li>Python · C · C++ · Go</li>
+              <li>JavaScript · Node.js · PHP</li>
+              <li>Bash · Fish · Scripting</li>
+              <li>Competitive Programming</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> SYSTEMS &amp; TOOLS</div>
+            <ul class="skill-list">
+              <li>Kali Linux · Arch Linux · Ubuntu</li>
+              <li>Docker · Git · GitHub</li>
+              <li>Linux Server / OS Administration</li>
+              <li>Scapy / tshark / Wireshark</li>
+              <li>Joplin</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-header"><span class="skill-icon">◈</span> WEB &amp; FULL-STACK</div>
+            <ul class="skill-list">
+              <li>HTML / HTML5 / CSS</li>
+              <li>Bootstrap</li>
+              <li>Full-Stack Development</li>
+              <li>Application Security</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-label">[03 // OPERATIONS]</div>
+        <h2 class="section-heading">Research Projects</h2>
+        <div class="projects-list">
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">BLE</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">BLE Security Monitor POC</h3>
+            <p class="project-desc">
+              BLE security research environment generating labeled pcap datasets across multiple attack categories. Feeds an ML-based IDS pipeline with integer-labeled records for anomaly classification.
+            </p>
+            <div class="project-tags">
+              <span>BLE SMP</span><span>Scapy</span><span>BlueZ</span><span>ML/IDS</span><span>Dataset Gen</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">ZIGBEE</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">Zigbee Attack Lab</h3>
+            <p class="project-desc">
+              Zigbee security research covering various attack scenarios and protocol-level analysis. Part of a multi-protocol dataset generation pipeline for IoT network threat detection.
+            </p>
+            <div class="project-tags">
+              <span>802.15.4</span><span>Protocol Analysis</span><span>Dataset Gen</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Wi-Fi</span>
+              <span class="project-status status-complete">COMPLETE</span>
+            </div>
+            <h3 class="project-title">Wi-Fi Management Frame Attack Dataset</h3>
+            <p class="project-desc">
+              Generated labeled datasets for Wi-Fi management frame attacks on embedded IoT hardware. Trained XGBoost and Random Forest classifiers for anomaly detection. Foundational dataset work underpinning a multi-protocol IDS pipeline.
+            </p>
+            <div class="project-tags">
+              <span>802.11</span><span>XGBoost</span><span>Random Forest</span><span>ESP32</span><span>tshark</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">INFRA</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">Zero Trust IoT Security Architecture</h3>
+            <p class="project-desc">
+              Threat modeling using STRIDE for a multi-layer IoT security architecture under a Zero Trust / microsegmentation framework covering Wi-Fi, BLE, and Zigbee. Security module design and attack surface enumeration across protocol layers.
+            </p>
+            <div class="project-tags">
+              <span>STRIDE</span><span>Zero Trust</span><span>Microsegmentation</span><span>IoT</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">INTEL</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">CVE Database Landscape Analysis</h3>
+            <p class="project-desc">
+              Comprehensive evaluation of 1,288+ CVE and vulnerability databases across 20 parameters, with an IoT/OT security focus. Delivers a scored comparison matrix (80+ databases), narrative gap analysis, four-tier database classification, and practical source-selection guidance for building resilient vulnerability intelligence pipelines.
+            </p>
+            <div class="project-tags">
+              <span>CVE/NVD</span><span>IoT/OT</span><span>Gap Analysis</span><span>CVSS</span><span>Threat Intel</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">AUTH</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">Blockchain Authentication for IoT Devices</h3>
+            <p class="project-desc">
+              Hyperledger Fabric-based decentralised authentication framework for IoT devices using a Kerberos-inspired three-tier architecture — Authentication Server, Ticket Granting Server, and IoT Service Validator. Implements PKI-based device authentication, fine-grained service tickets, session management, and immutable blockchain audit logging.
+            </p>
+            <div class="project-tags">
+              <span>Hyperledger Fabric</span><span>Go</span><span>PKI</span><span>IoT Auth</span><span>Zero Trust</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="section section-alt">
+      <div class="container">
+        <div class="section-label">[04 // INTELLIGENCE]</div>
+        <h2 class="section-heading">Reports &amp; Publications</h2>
+        <div class="pub-list">
+
+          <div class="pub-item">
+            <div class="pub-year">2026</div>
+            <div class="pub-body">
+              <h3 class="pub-title">Reliable Authentication of IoT Using Kerberos and Blockchain</h3>
+              <p class="pub-desc">Presents an upgraded Kerberos authentication system integrating blockchain to address centralised single-point failure and scalability limitations. Proposes decentralised authentication via symmetric-to-asymmetric cryptography migration, enabling fault-tolerant, high-security IoT data sharing. Includes formal mathematical proof of scheme correctness and comparative analysis against existing IoT authentication approaches.</p>
+              <span class="pub-tag">Springer</span>
+              <span class="pub-tag">Feb 2026</span>
+              <span class="pub-tag">Kerberos</span>
+              <span class="pub-tag">Blockchain</span>
+              <span class="pub-tag">IoT Auth</span>
+            </div>
+          </div>
+
+          <div class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <h3 class="pub-title">A Comprehensive Survey on Zero Trust Architecture in IoT Networks</h3>
+              <p class="pub-desc">In-depth analysis of Zero Trust Architecture (ZTA) adoption in IoT environments. Examines limitations of traditional perimeter-based models and evaluates ZT principles — continuous authentication, least privilege, micro-segmentation, and continuous monitoring — against IoT constraints including device heterogeneity, scalability, and resource limitations. Reviews enabling technologies and AI/ML-driven anomaly detection, with future directions in lightweight cryptography and autonomous policy orchestration.</p>
+              <span class="pub-tag">IEEE</span>
+              <span class="pub-tag">Dec 2025</span>
+              <span class="pub-tag">Zero Trust</span>
+              <span class="pub-tag">IoT Security</span>
+              <span class="pub-tag">Survey</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- REPOSITORIES -->
+    <section id="repositories" class="section">
+      <div class="container">
+        <div class="section-label">[05 // REPOSITORIES]</div>
+        <h2 class="section-heading">Open Source</h2>
+        <div class="projects-list">
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Python</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">cve-database-analysis</h3>
+            <p class="project-desc">Comprehensive evaluation of 1,288+ CVE/vulnerability databases across 20 parameters. Gap analysis, comparison matrix, and IoT/OT-focused recommendations.</p>
+            <div class="project-tags"><span>CVE</span><span>IoT/OT</span><span>Gap Analysis</span></div>
+            <a href="https://github.com/fmfalgun/cve-database-analysis" target="_blank" rel="noopener noreferrer" class="project-link">→ View on GitHub ↗</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Go</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">blok_chain_authh</h3>
+            <p class="project-desc">Blockchain-based authentication framework for IoT devices — Hyperledger Fabric, PKI, Kerberos-inspired three-tier architecture.</p>
+            <div class="project-tags"><span>Go</span><span>Hyperledger</span><span>PKI</span><span>IoT Auth</span></div>
+            <a href="https://github.com/fmfalgun/blok_chain_authh" target="_blank" rel="noopener noreferrer" class="project-link">→ View on GitHub ↗</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Python</span>
+              <span class="project-status status-active">★ 4</span>
+            </div>
+            <h3 class="project-title">Solo_leveling</h3>
+            <p class="project-desc">Progress log while working and learning across cybersecurity, Linux, and programming.</p>
+            <div class="project-tags"><span>cybersecurity</span><span>linux</span><span>programming</span></div>
+            <a href="https://github.com/fmfalgun/Solo_leveling" target="_blank" rel="noopener noreferrer" class="project-link">→ View on GitHub ↗</a>
+          </article>
+
+        </div>
+        <div class="repos-more">
+          <a href="https://github.com/fmfalgun" target="_blank" rel="noopener noreferrer" class="repos-more-link">→ Explore all repositories on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-label">[06 // COMMS]</div>
+        <h2 class="section-heading">Establish Contact</h2>
+        <p class="contact-sub">Open to research collaboration, cybersecurity roles, and dataset/consulting inquiries.</p>
+        <div class="contact-grid">
+          <a href="mailto:fmfalgunmarothia@gmail.com" class="contact-card">
+            <span class="contact-icon" aria-hidden="true">✉</span>
+            <span class="contact-label">EMAIL</span>
+            <span class="contact-val">fmfalgunmarothia@gmail.com</span>
+          </a>
+          <a href="https://github.com/fmfalgun" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon" aria-hidden="true">⌥</span>
+            <span class="contact-label">GITHUB</span>
+            <span class="contact-val">github.com/fmfalgun</span>
+          </a>
+          <a href="https://www.linkedin.com/in/falgun-marothia-52a383191/" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon" aria-hidden="true">◉</span>
+            <span class="contact-label">LINKEDIN</span>
+            <span class="contact-val">falgun-marothia ↗</span>
+          </a>
+          <a href="falgun_resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon" aria-hidden="true">⊞</span>
+            <span class="contact-label">RESUME</span>
+            <span class="contact-val">Download PDF ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">FM<span class="accent">//</span>SEC</span>
+      <span class="footer-copy">© 2026 Falgun Marothia · fmfalgun.github.io</span>
+      <span class="footer-sig">BUILT WITH PURPOSE</span>
+    </div>
+  </footer>
+
+  <!-- MVC Controllers & Views (ES Modules) -->
+  <script type="module" src="src/controllers/navController.js"></script>
+  <script type="module" src="src/controllers/animationController.js"></script>
+  <script type="module" src="src/views/hero.js"></script>
+
+</body>
+</html>

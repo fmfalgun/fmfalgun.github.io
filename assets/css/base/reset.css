@@ -1,0 +1,28 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { color: var(--amber); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--cream); }
+
+code {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-size: 0.85em;
+  background: rgba(212,136,42,.1);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--green); }
