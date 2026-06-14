@@ -126,6 +126,23 @@
       </div>
     </section>
 
+    <!-- RECON -->
+    <section id="recon">
+      <div class="container">
+        <div class="section-label">[// PASSIVE RECON]</div>
+        <div class="recon-header">
+          <h2 class="section-heading">What This Page Knows About You</h2>
+          <p class="recon-intro">Every website you visit silently collects this data the moment your browser connects — no clicks, no permissions, no warnings. This is a passive snapshot of your digital fingerprint.</p>
+        </div>
+        <div class="recon-grid" id="recon-grid">
+          <div class="recon-block">
+            <div class="recon-block-label">// INITIALISING RECON...</div>
+          </div>
+        </div>
+        <p class="recon-caption">All data collected client-side via browser APIs. IP geolocation via <span>ipapi.co</span>. Nothing is stored or transmitted beyond your browser.</p>
+      </div>
+    </section>
+
     <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
@@ -255,11 +272,10 @@
           <article class="project-card">
             <div class="project-meta">
               <span class="project-protocol">BLE</span>
-              <span class="project-status status-active">ACTIVE</span>
             </div>
             <h3 class="project-title">BLE Security Monitor POC</h3>
             <p class="project-desc">
-              BLE security research environment generating labeled pcap datasets across multiple attack categories. Feeds an ML-based IDS pipeline with integer-labeled records for anomaly classification.
+              Strong foundation in BLE protocol security — covering attack surface analysis, pcap dataset methodology across multiple attack categories, and ML-based IDS pipeline design with integer-labelled records for anomaly classification.
             </p>
             <div class="project-tags">
               <span>BLE SMP</span><span>Scapy</span><span>BlueZ</span><span>ML/IDS</span><span>Dataset Gen</span>
@@ -269,11 +285,10 @@
           <article class="project-card">
             <div class="project-meta">
               <span class="project-protocol">ZIGBEE</span>
-              <span class="project-status status-active">ACTIVE</span>
             </div>
             <h3 class="project-title">Zigbee Attack Lab</h3>
             <p class="project-desc">
-              Zigbee security research covering various attack scenarios and protocol-level analysis. Part of a multi-protocol dataset generation pipeline for IoT network threat detection.
+              Working knowledge of Zigbee protocol security analysis, including attack scenario design, protocol-level inspection, and multi-protocol dataset generation methodologies for IoT threat detection.
             </p>
             <div class="project-tags">
               <span>802.15.4</span><span>Protocol Analysis</span><span>Dataset Gen</span>
@@ -283,11 +298,10 @@
           <article class="project-card">
             <div class="project-meta">
               <span class="project-protocol">Wi-Fi</span>
-              <span class="project-status status-complete">COMPLETE</span>
             </div>
             <h3 class="project-title">Wi-Fi Management Frame Attack Dataset</h3>
             <p class="project-desc">
-              Generated labeled datasets for Wi-Fi management frame attacks on embedded IoT hardware. Trained XGBoost and Random Forest classifiers for anomaly detection. Foundational dataset work underpinning a multi-protocol IDS pipeline.
+              Deep understanding of Wi-Fi management frame attack patterns and labeled dataset methodology. Familiar with training XGBoost and Random Forest classifiers for wireless anomaly detection as part of a multi-protocol IDS pipeline.
             </p>
             <div class="project-tags">
               <span>802.11</span><span>XGBoost</span><span>Random Forest</span><span>ESP32</span><span>tshark</span>
@@ -297,11 +311,10 @@
           <article class="project-card">
             <div class="project-meta">
               <span class="project-protocol">INFRA</span>
-              <span class="project-status status-active">ACTIVE</span>
             </div>
             <h3 class="project-title">Zero Trust IoT Security Architecture</h3>
             <p class="project-desc">
-              Threat modeling using STRIDE for a multi-layer IoT security architecture under a Zero Trust / microsegmentation framework covering Wi-Fi, BLE, and Zigbee. Security module design and attack surface enumeration across protocol layers.
+              Knowledge of formal threat modeling (STRIDE) applied to multi-layer IoT architectures under Zero Trust / microsegmentation frameworks covering Wi-Fi, BLE, and Zigbee. Familiar with security module design and attack surface enumeration across protocol layers.
             </p>
             <div class="project-tags">
               <span>STRIDE</span><span>Zero Trust</span><span>Microsegmentation</span><span>IoT</span>
@@ -469,6 +482,7 @@
   <script type="module" src="src/controllers/navController.js"></script>
   <script type="module" src="src/controllers/animationController.js"></script>
   <script type="module" src="src/views/hero.js"></script>
+  <script type="module" src="src/controllers/reconController.js"></script>
 
 </body>
 </html>
