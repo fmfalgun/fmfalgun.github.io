@@ -1,11 +1,26 @@
-/**
- * reconController.js
- * Passive browser fingerprint recon — collects everything JS can see
- * and renders it into #recon-grid as labeled data blocks.
- */
+import { initializeApp }                        from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp }
+                                                from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 /* ------------------------------------------------------------------ */
-/* Helpers                                                              */
+/* Firebase init                                                        */
+/* ------------------------------------------------------------------ */
+
+const firebaseConfig = {
+  apiKey:            'AIzaSyDgSUdm1Bk7dCV-R5VtIPcNAkLAszuN23E',
+  authDomain:        'portfolio-recon.firebaseapp.com',
+  projectId:         'portfolio-recon',
+  storageBucket:     'portfolio-recon.firebasestorage.app',
+  messagingSenderId: '696843373400',
+  appId:             '1:696843373400:web:3e77aff536db9ffc68f32d',
+  measurementId:     'G-SKDLWZHH6J',
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+/* ------------------------------------------------------------------ */
+/* DOM helpers                                                          */
 /* ------------------------------------------------------------------ */
 
 function el(tag, cls, text) {
@@ -14,30 +29,13 @@ function el(tag, cls, text) {
   if (text !== undefined) e.textContent = text;
   return e;
 }
+function naSpan()      { return el('span', 'recon-na',      'UNAVAILABLE'); }
+function loadingSpan() { return el('span', 'recon-loading', 'FETCHING...'); }
+function valueSpan(t)  { return el('span', 'recon-value',   String(t));     }
 
-function naSpan() {
-  const s = el('span', 'recon-na');
-  s.textContent = 'UNAVAILABLE';
-  return s;
-}
-
-function loadingSpan() {
-  const s = el('span', 'recon-loading');
-  s.textContent = 'FETCHING...';
-  return s;
-}
-
-function valueSpan(text) {
-  const s = el('span', 'recon-value');
-  s.textContent = String(text);
-  return s;
-}
-
-/** Build a single key/value row. valueNode may be a string or a DOM node. */
 function makeRow(key, valueNode) {
   const row = el('div', 'recon-row');
-  const k = el('span', 'recon-key', key);
-  row.appendChild(k);
+  row.appendChild(el('span', 'recon-key', key));
   if (typeof valueNode === 'string' || typeof valueNode === 'number') {
     row.appendChild(valueSpan(valueNode));
   } else {
@@ -46,39 +44,28 @@ function makeRow(key, valueNode) {
   return row;
 }
 
-/** Build a complete block with a label and an array of [key, value] pairs. */
 function makeBlock(label, rows) {
   const block = el('div', 'recon-block');
-  const lbl = el('div', 'recon-block-label', '// ' + label);
-  block.appendChild(lbl);
-  for (const [key, val] of rows) {
-    block.appendChild(makeRow(key, val));
-  }
+  block.appendChild(el('div', 'recon-block-label', '// ' + label));
+  for (const [key, val] of rows) block.appendChild(makeRow(key, val));
   return block;
 }
 
-/** djb2 hash → short hex fingerprint */
+/* ------------------------------------------------------------------ */
+/* Utilities                                                            */
+/* ------------------------------------------------------------------ */
+
 function djb2(str) {
   let h = 5381;
-  for (let i = 0; i < str.length; i++) {
-    h = ((h << 5) + h) ^ str.charCodeAt(i);
-    h = h >>> 0; // keep 32-bit unsigned
-  }
+  for (let i = 0; i < str.length; i++) h = (((h << 5) + h) ^ str.charCodeAt(i)) >>> 0;
   return h.toString(16).padStart(8, '0');
 }
 
-/** Format minutes offset → ±HH:MM */
 function fmtOffset(mins) {
   const sign = mins <= 0 ? '+' : '-';
-  const abs = Math.abs(mins);
-  const hh = String(Math.floor(abs / 60)).padStart(2, '0');
-  const mm = String(abs % 60).padStart(2, '0');
-  return `UTC${sign}${hh}:${mm}`;
+  const abs  = Math.abs(mins);
+  return `UTC${sign}${String(Math.floor(abs/60)).padStart(2,'0')}:${String(abs%60).padStart(2,'0')}`;
 }
-
-/* ------------------------------------------------------------------ */
-/* GROUP 2 — Browser parsing                                            */
-/* ------------------------------------------------------------------ */
 
 function parseBrowser(ua) {
   const tests = [
@@ -88,58 +75,45 @@ function parseBrowser(ua) {
     { name: 'Firefox', re: /Firefox\/(\d+[\.\d]*)/ },
     { name: 'Safari',  re: /Version\/(\d+[\.\d]*).*Safari/ },
   ];
-  for (const t of tests) {
-    const m = ua.match(t.re);
-    if (m) return { name: t.name, version: m[1] };
-  }
+  for (const t of tests) { const m = ua.match(t.re); if (m) return { name: t.name, version: m[1] }; }
   return { name: 'UNKNOWN', version: '?' };
 }
 
 function parseEngine(ua) {
   if (/Gecko\/\d/.test(ua) && !/like Gecko/.test(ua)) return 'Gecko';
-  if (/AppleWebKit/.test(ua) && !/Chrome/.test(ua)) return 'WebKit';
-  if (/Chrome|Chromium/.test(ua)) return 'Blink';
-  if (/Gecko/.test(ua)) return 'Gecko';
+  if (/AppleWebKit/.test(ua) && !/Chrome/.test(ua))   return 'WebKit';
+  if (/Chrome|Chromium/.test(ua))                      return 'Blink';
+  if (/Gecko/.test(ua))                                return 'Gecko';
   return 'UNKNOWN';
 }
 
 function parseOS(ua) {
-  if (/Windows NT 10/.test(ua)) return 'Windows 10/11';
-  if (/Windows NT 6\.3/.test(ua)) return 'Windows 8.1';
-  if (/Windows NT 6\.1/.test(ua)) return 'Windows 7';
-  if (/Windows/.test(ua)) return 'Windows';
-  if (/Android (\d+[\.\d]*)/.test(ua)) return 'Android ' + ua.match(/Android (\d+[\.\d]*)/)[1];
-  if (/iPhone OS ([\d_]+)/.test(ua)) return 'iOS ' + ua.match(/iPhone OS ([\d_]+)/)[1].replace(/_/g, '.');
-  if (/iPad.*OS ([\d_]+)/.test(ua)) return 'iPadOS ' + ua.match(/iPad.*OS ([\d_]+)/)[1].replace(/_/g, '.');
-  if (/Mac OS X ([\d_]+)/.test(ua)) return 'macOS ' + ua.match(/Mac OS X ([\d_]+)/)[1].replace(/_/g, '.');
-  if (/Linux/.test(ua)) return 'Linux';
+  if (/Windows NT 10/.test(ua))           return 'Windows 10/11';
+  if (/Windows NT 6\.3/.test(ua))         return 'Windows 8.1';
+  if (/Windows NT 6\.1/.test(ua))         return 'Windows 7';
+  if (/Windows/.test(ua))                 return 'Windows';
+  if (/Android ([\d.]+)/.test(ua))        return 'Android ' + ua.match(/Android ([\d.]+)/)[1];
+  if (/iPhone OS ([\d_]+)/.test(ua))      return 'iOS '     + ua.match(/iPhone OS ([\d_]+)/)[1].replace(/_/g,'.');
+  if (/iPad.*OS ([\d_]+)/.test(ua))       return 'iPadOS '  + ua.match(/iPad.*OS ([\d_]+)/)[1].replace(/_/g,'.');
+  if (/Mac OS X ([\d_]+)/.test(ua))       return 'macOS '   + ua.match(/Mac OS X ([\d_]+)/)[1].replace(/_/g,'.');
+  if (/Linux/.test(ua))                   return 'Linux';
   return 'UNKNOWN';
 }
 
-/* ------------------------------------------------------------------ */
-/* GROUP 5 — WebGL                                                      */
-/* ------------------------------------------------------------------ */
-
 function getWebGL() {
   try {
-    const c = document.createElement('canvas');
-    let gl = c.getContext('webgl2');
+    const c  = document.createElement('canvas');
+    let gl   = c.getContext('webgl2');
     const ver = gl ? 'WebGL 2' : 'WebGL 1';
     if (!gl) gl = c.getContext('webgl') || c.getContext('experimental-webgl');
     if (!gl) return { renderer: null, vendor: null, version: 'UNAVAILABLE', maxTex: null };
-    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    const ext      = gl.getExtension('WEBGL_debug_renderer_info');
     const renderer = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : null;
     const vendor   = ext ? gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)   : null;
     const maxTex   = gl.getParameter(gl.MAX_TEXTURE_SIZE);
     return { renderer, vendor, version: ver, maxTex };
-  } catch (_) {
-    return { renderer: null, vendor: null, version: null, maxTex: null };
-  }
+  } catch (_) { return { renderer: null, vendor: null, version: null, maxTex: null }; }
 }
-
-/* ------------------------------------------------------------------ */
-/* GROUP 10 — Canvas fingerprint                                        */
-/* ------------------------------------------------------------------ */
 
 function canvasFingerprint() {
   try {
@@ -148,280 +122,265 @@ function canvasFingerprint() {
     const ctx = c.getContext('2d');
     ctx.textBaseline = 'top';
     ctx.font = '14px "Share Tech Mono", monospace';
-    ctx.fillStyle = '#0D0F0A';
-    ctx.fillRect(0, 0, 200, 50);
-    ctx.fillStyle = '#D4882A';
-    ctx.fillText('FM//SEC recon v1', 2, 2);
-    ctx.fillStyle = '#3D4A3E';
-    ctx.beginPath();
-    ctx.arc(170, 25, 15, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = '#E8E4D9';
-    ctx.fillText('★', 163, 17);
-    const data = c.toDataURL();
-    return djb2(data);
-  } catch (_) {
-    return null;
-  }
+    ctx.fillStyle = '#0D0F0A'; ctx.fillRect(0,0,200,50);
+    ctx.fillStyle = '#D4882A'; ctx.fillText('FM//SEC recon v1', 2, 2);
+    ctx.fillStyle = '#3D4A3E'; ctx.beginPath(); ctx.arc(170,25,15,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#E8E4D9'; ctx.fillText('★', 163, 17);
+    return djb2(c.toDataURL());
+  } catch (_) { return null; }
 }
 
 /* ------------------------------------------------------------------ */
-/* Main render                                                          */
+/* Main                                                                 */
 /* ------------------------------------------------------------------ */
 
 async function runRecon() {
   const grid = document.getElementById('recon-grid');
   if (!grid) return;
-
-  // Clear placeholder
   grid.innerHTML = '';
 
-  const ua = navigator.userAgent;
-  const browser = parseBrowser(ua);
-  const engine  = parseEngine(ua);
-  const os      = parseOS(ua);
-  const webgl   = getWebGL();
-  const conn    = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const isMobile = /Mobi|Android/i.test(ua);
-  const isTablet = !isMobile && navigator.maxTouchPoints > 1 && window.innerWidth < 1200;
+  const ua         = navigator.userAgent;
+  const browser    = parseBrowser(ua);
+  const engine     = parseEngine(ua);
+  const os         = parseOS(ua);
+  const webgl      = getWebGL();
+  const conn       = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const isMobile   = /Mobi|Android/i.test(ua);
+  const isTablet   = !isMobile && navigator.maxTouchPoints > 1 && window.innerWidth < 1200;
   const deviceType = isMobile ? 'MOBILE' : isTablet ? 'TABLET' : 'DESKTOP';
 
-  /* ---------- Local storage test ---------- */
-  function storageAvail(type) {
-    try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); return 'YES'; }
-    catch (_) { return 'NO'; }
-  }
-  const lsAvail = (() => {
-    try { localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return 'YES'; } catch(_) { return 'NO'; }
-  })();
-  const ssAvail = (() => {
-    try { sessionStorage.setItem('__t','1'); sessionStorage.removeItem('__t'); return 'YES'; } catch(_) { return 'NO'; }
-  })();
+  const lsAvail = (() => { try { localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return 'YES'; } catch(_){ return 'NO'; } })();
+  const ssAvail = (() => { try { sessionStorage.setItem('__t','1'); sessionStorage.removeItem('__t'); return 'YES'; } catch(_){ return 'NO'; } })();
 
-  /* ---------- PDF viewer ---------- */
   let pdfViewer = 'UNAVAILABLE';
   if (typeof navigator.pdfViewerEnabled !== 'undefined') {
     pdfViewer = navigator.pdfViewerEnabled ? 'YES' : 'NO';
   } else {
-    const plugins = Array.from(navigator.plugins || []);
-    pdfViewer = plugins.some(p => /pdf/i.test(p.name)) ? 'YES (PLUGIN)' : 'NO';
+    pdfViewer = Array.from(navigator.plugins||[]).some(p=>/pdf/i.test(p.name)) ? 'YES (PLUGIN)' : 'NO';
   }
 
-  /* ---------- Page load time ---------- */
-  let loadTime = naSpan();
+  let loadTime = null;
   try {
     const pt = performance.timing;
-    if (pt && pt.loadEventEnd && pt.navigationStart) {
+    if (pt?.loadEventEnd && pt?.navigationStart) {
       const ms = pt.loadEventEnd - pt.navigationStart;
-      if (ms > 0) loadTime = ms + ' ms';
+      if (ms > 0) loadTime = ms;
     }
   } catch(_) {}
 
-  /* ---------- Canvas fingerprint ---------- */
-  const cfp = canvasFingerprint();
-
-  /* ---------- UTC offset ---------- */
-  const utcOffset = fmtOffset(new Date().getTimezoneOffset());
-
-  /* ---------- Local time ---------- */
-  const localTime = new Date().toLocaleString(navigator.language, { hour12: false });
-
-  /* ---------- Color scheme / media ---------- */
-  const colorScheme   = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'DARK' : 'LIGHT';
+  const cfp         = canvasFingerprint();
+  const utcOffset   = fmtOffset(new Date().getTimezoneOffset());
+  const localTime   = new Date().toLocaleString(navigator.language, { hour12: false });
+  const colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'DARK' : 'LIGHT';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'YES' : 'NO';
-  const highContrast  = window.matchMedia('(prefers-contrast: more)').matches ? 'MORE' :
-                        window.matchMedia('(prefers-contrast: less)').matches ? 'LESS' : 'NO PREFERENCE';
+  const highContrast  = window.matchMedia('(prefers-contrast: more)').matches  ? 'MORE' :
+                        window.matchMedia('(prefers-contrast: less)').matches  ? 'LESS' : 'NO PREFERENCE';
 
-  /* ---------- Screen orientation ---------- */
-  let orientation = naSpan();
-  try {
-    if (screen.orientation && screen.orientation.type) {
-      orientation = screen.orientation.type;
-    }
-  } catch(_) {}
+  let orientation = null;
+  try { if (screen.orientation?.type) orientation = screen.orientation.type; } catch(_) {}
 
-  /* ---------- Java ---------- */
   let javaEnabled = 'NO';
   try { javaEnabled = navigator.javaEnabled() ? 'YES' : 'NO'; } catch(_) {}
 
-  /* ============================================================ */
-  /* GROUP 1 — Network/IP: render with loading placeholders first */
-  /* ============================================================ */
-
-  // We render IP block with loading spans then fill them in after fetch
+  /* ---------- GROUP 1: IP — loading placeholders ---------- */
   const ipKeys = ['IP ADDRESS','CITY','REGION','COUNTRY','ISP / ORG','LATITUDE','LONGITUDE','ASN','TIMEZONE (IP)'];
   const ipValueSpans = {};
-  const ipRows = ipKeys.map(k => {
-    const span = loadingSpan();
-    ipValueSpans[k] = span;
-    return [k, span];
-  });
-  const ipBlock = makeBlock('NETWORK / LOCATION', ipRows);
+  const ipBlock = makeBlock('NETWORK / LOCATION', ipKeys.map(k => {
+    const s = loadingSpan(); ipValueSpans[k] = s; return [k, s];
+  }));
   grid.appendChild(ipBlock);
 
-  /* ==================== */
-  /* GROUP 2 — Browser    */
-  /* ==================== */
+  /* ---------- GROUP 2: Browser ---------- */
   grid.appendChild(makeBlock('BROWSER', [
-    ['USER AGENT',         ua],
-    ['BROWSER',           `${browser.name} ${browser.version}`],
-    ['ENGINE',            engine],
-    ['COOKIES ENABLED',   navigator.cookieEnabled ? 'YES' : 'NO'],
-    ['DO NOT TRACK',      navigator.doNotTrack !== null && navigator.doNotTrack !== undefined ? String(navigator.doNotTrack) : naSpan()],
-    ['LOCAL STORAGE',     lsAvail],
-    ['SESSION STORAGE',   ssAvail],
-    ['PDF VIEWER',        pdfViewer],
+    ['USER AGENT',       ua],
+    ['BROWSER',          `${browser.name} ${browser.version}`],
+    ['ENGINE',           engine],
+    ['COOKIES ENABLED',  navigator.cookieEnabled ? 'YES' : 'NO'],
+    ['DO NOT TRACK',     navigator.doNotTrack ?? naSpan()],
+    ['LOCAL STORAGE',    lsAvail],
+    ['SESSION STORAGE',  ssAvail],
+    ['PDF VIEWER',       pdfViewer],
   ]));
 
-  /* ====================== */
-  /* GROUP 3 — OS / Device  */
-  /* ====================== */
+  /* ---------- GROUP 3: OS/Device ---------- */
   grid.appendChild(makeBlock('OS / DEVICE', [
-    ['OPERATING SYSTEM',  os],
-    ['PLATFORM',          navigator.platform || naSpan()],
-    ['CPU CORES',         navigator.hardwareConcurrency != null ? String(navigator.hardwareConcurrency) : naSpan()],
-    ['DEVICE MEMORY',     navigator.deviceMemory != null ? navigator.deviceMemory + ' GB (approx)' : naSpan()],
-    ['TOUCH SUPPORT',     navigator.maxTouchPoints > 0 ? `YES (${navigator.maxTouchPoints} points)` : 'NO'],
-    ['DEVICE TYPE',       deviceType],
+    ['OPERATING SYSTEM', os],
+    ['PLATFORM',         navigator.platform || naSpan()],
+    ['CPU CORES',        navigator.hardwareConcurrency != null ? String(navigator.hardwareConcurrency) : naSpan()],
+    ['DEVICE MEMORY',    navigator.deviceMemory != null ? navigator.deviceMemory + ' GB (approx)' : naSpan()],
+    ['TOUCH SUPPORT',    navigator.maxTouchPoints > 0 ? `YES (${navigator.maxTouchPoints} points)` : 'NO'],
+    ['DEVICE TYPE',      deviceType],
   ]));
 
-  /* ==================== */
-  /* GROUP 4 — Screen     */
-  /* ==================== */
+  /* ---------- GROUP 4: Screen ---------- */
   grid.appendChild(makeBlock('SCREEN', [
-    ['RESOLUTION',        `${screen.width}×${screen.height}`],
-    ['AVAIL RESOLUTION',  `${screen.availWidth}×${screen.availHeight}`],
-    ['VIEWPORT',          `${window.innerWidth}×${window.innerHeight}`],
-    ['COLOR DEPTH',       `${screen.colorDepth} bit`],
-    ['PIXEL RATIO',       `${window.devicePixelRatio}x`],
-    ['ORIENTATION',       orientation],
+    ['RESOLUTION',       `${screen.width}×${screen.height}`],
+    ['AVAIL RESOLUTION', `${screen.availWidth}×${screen.availHeight}`],
+    ['VIEWPORT',         `${window.innerWidth}×${window.innerHeight}`],
+    ['COLOR DEPTH',      `${screen.colorDepth} bit`],
+    ['PIXEL RATIO',      `${window.devicePixelRatio}x`],
+    ['ORIENTATION',      orientation || naSpan()],
   ]));
 
-  /* ==================== */
-  /* GROUP 5 — WebGL/GPU  */
-  /* ==================== */
+  /* ---------- GROUP 5: WebGL ---------- */
   grid.appendChild(makeBlock('GRAPHICS (WebGL)', [
-    ['GPU RENDERER',      webgl.renderer || naSpan()],
-    ['GPU VENDOR',        webgl.vendor   || naSpan()],
-    ['WEBGL VERSION',     webgl.version  || naSpan()],
-    ['MAX TEXTURE SIZE',  webgl.maxTex != null ? String(webgl.maxTex) : naSpan()],
+    ['GPU RENDERER',     webgl.renderer || naSpan()],
+    ['GPU VENDOR',       webgl.vendor   || naSpan()],
+    ['WEBGL VERSION',    webgl.version  || naSpan()],
+    ['MAX TEXTURE SIZE', webgl.maxTex != null ? String(webgl.maxTex) : naSpan()],
   ]));
 
-  /* ==================== */
-  /* GROUP 6 — Network    */
-  /* ==================== */
+  /* ---------- GROUP 6: Network client ---------- */
   grid.appendChild(makeBlock('NETWORK (CLIENT)', [
-    ['CONNECTION TYPE',   conn?.effectiveType   || naSpan()],
-    ['DOWNLINK EST.',     conn?.downlink != null ? conn.downlink + ' Mbps' : naSpan()],
-    ['SAVE DATA MODE',    conn?.saveData != null ? (conn.saveData ? 'ON' : 'OFF') : naSpan()],
-    ['ONLINE STATUS',     navigator.onLine ? 'ONLINE' : 'OFFLINE'],
+    ['CONNECTION TYPE',  conn?.effectiveType              || naSpan()],
+    ['DOWNLINK EST.',    conn?.downlink != null ? conn.downlink + ' Mbps' : naSpan()],
+    ['SAVE DATA MODE',   conn?.saveData != null ? (conn.saveData ? 'ON' : 'OFF') : naSpan()],
+    ['ONLINE STATUS',    navigator.onLine ? 'ONLINE' : 'OFFLINE'],
   ]));
 
-  /* ========================= */
-  /* GROUP 7 — Locale / Time   */
-  /* ========================= */
+  /* ---------- GROUP 7: Locale ---------- */
   grid.appendChild(makeBlock('LOCALE / TIME', [
-    ['BROWSER LANGUAGE',  navigator.language],
-    ['ALL LANGUAGES',     (navigator.languages || [navigator.language]).join(', ')],
-    ['TIMEZONE',          Intl.DateTimeFormat().resolvedOptions().timeZone],
-    ['UTC OFFSET',        utcOffset],
-    ['LOCAL TIME',        localTime],
+    ['BROWSER LANGUAGE', navigator.language],
+    ['ALL LANGUAGES',    (navigator.languages || [navigator.language]).join(', ')],
+    ['TIMEZONE',         Intl.DateTimeFormat().resolvedOptions().timeZone],
+    ['UTC OFFSET',       utcOffset],
+    ['LOCAL TIME',       localTime],
   ]));
 
-  /* ========================= */
-  /* GROUP 8 — Preferences     */
-  /* ========================= */
+  /* ---------- GROUP 8: Preferences ---------- */
   grid.appendChild(makeBlock('PREFERENCES', [
-    ['COLOR SCHEME',      colorScheme],
-    ['REDUCED MOTION',    reducedMotion],
-    ['HIGH CONTRAST',     highContrast],
+    ['COLOR SCHEME',    colorScheme],
+    ['REDUCED MOTION',  reducedMotion],
+    ['HIGH CONTRAST',   highContrast],
   ]));
 
-  /* ==================== */
-  /* GROUP 9 — Battery    */
-  /* ==================== */
+  /* ---------- GROUP 9: Battery ---------- */
   const battBlock = makeBlock('BATTERY', []);
   grid.appendChild(battBlock);
-
   if (typeof navigator.getBattery === 'function') {
-    // Render loading rows
     const battKeys = ['LEVEL','CHARGING','TIME TO FULL','TIME TO DISCHARGE'];
     const battSpans = {};
-    for (const k of battKeys) {
-      const span = loadingSpan();
-      battSpans[k] = span;
-      battBlock.appendChild(makeRow(k, span));
-    }
+    for (const k of battKeys) { const s = loadingSpan(); battSpans[k] = s; battBlock.appendChild(makeRow(k, s)); }
     navigator.getBattery().then(bat => {
-      battSpans['LEVEL'].className = 'recon-value';
-      battSpans['LEVEL'].textContent = Math.round(bat.level * 100) + '%';
-      battSpans['CHARGING'].className = 'recon-value';
-      battSpans['CHARGING'].textContent = bat.charging ? 'YES' : 'NO';
-      battSpans['TIME TO FULL'].className = 'recon-value';
-      battSpans['TIME TO FULL'].textContent = bat.charging && bat.chargingTime !== Infinity
-        ? Math.round(bat.chargingTime / 60) + ' min'
-        : bat.chargingTime === Infinity ? 'N/A' : 'NOT CHARGING';
-      battSpans['TIME TO DISCHARGE'].className = 'recon-value';
-      battSpans['TIME TO DISCHARGE'].textContent = !bat.charging && bat.dischargingTime !== Infinity
-        ? Math.round(bat.dischargingTime / 60) + ' min'
-        : 'N/A';
-    }).catch(() => {
-      for (const k of battKeys) {
-        battSpans[k].className = 'recon-na';
-        battSpans[k].textContent = 'UNAVAILABLE';
-      }
-    });
+      const set = (k, v) => { battSpans[k].className = 'recon-value'; battSpans[k].textContent = v; };
+      set('LEVEL',            Math.round(bat.level * 100) + '%');
+      set('CHARGING',         bat.charging ? 'YES' : 'NO');
+      set('TIME TO FULL',     bat.charging && bat.chargingTime !== Infinity ? Math.round(bat.chargingTime/60) + ' min' : 'N/A');
+      set('TIME TO DISCHARGE',!bat.charging && bat.dischargingTime !== Infinity ? Math.round(bat.dischargingTime/60) + ' min' : 'N/A');
+    }).catch(() => { for (const k of battKeys) { battSpans[k].className = 'recon-na'; battSpans[k].textContent = 'UNAVAILABLE'; } });
   } else {
-    const lbl = battBlock.querySelector('.recon-block-label');
-    const row = makeRow('BATTERY API', naSpan());
-    battBlock.appendChild(row);
+    battBlock.appendChild(makeRow('BATTERY API', naSpan()));
   }
 
-  /* ==================== */
-  /* GROUP 10 — Misc      */
-  /* ==================== */
+  /* ---------- GROUP 10: Misc / Fingerprint ---------- */
   grid.appendChild(makeBlock('MISC / FINGERPRINT', [
     ['REFERRER',          document.referrer || 'DIRECT'],
-    ['PAGE LOAD TIME',    loadTime],
+    ['PAGE LOAD TIME',    loadTime ? loadTime + ' ms' : naSpan()],
     ['PLUGINS COUNT',     String(navigator.plugins.length)],
     ['CANVAS FINGERPRINT',cfp || naSpan()],
     ['JAVA ENABLED',      javaEnabled],
     ['CPU THREADS',       navigator.hardwareConcurrency != null ? String(navigator.hardwareConcurrency) : naSpan()],
   ]));
 
-  /* ============================================================ */
-  /* IP fetch — populate GROUP 1 rows after async resolve        */
-  /* ============================================================ */
+  /* ================================================================ */
+  /* IP fetch — fill GROUP 1 + save everything to Firestore           */
+  /* ================================================================ */
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 3000);
+  const timeout    = setTimeout(() => controller.abort(), 3000);
+  let ipData       = {};
 
   try {
     const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
     clearTimeout(timeout);
     const d = await res.json();
+    ipData  = d;
 
     const fill = (key, val) => {
       const span = ipValueSpans[key];
-      span.className = val ? 'recon-value' : 'recon-na';
+      span.className   = val ? 'recon-value' : 'recon-na';
       span.textContent = val || 'UNAVAILABLE';
     };
-
-    fill('IP ADDRESS',   d.ip);
-    fill('CITY',         d.city);
-    fill('REGION',       d.region);
-    fill('COUNTRY',      d.country_name ? `${d.country_name} (${d.country_code})` : d.country_code);
-    fill('ISP / ORG',    d.org);
-    fill('LATITUDE',     d.latitude != null ? String(d.latitude) : null);
-    fill('LONGITUDE',    d.longitude != null ? String(d.longitude) : null);
-    fill('ASN',          d.asn);
-    fill('TIMEZONE (IP)',d.timezone);
+    fill('IP ADDRESS',    d.ip);
+    fill('CITY',          d.city);
+    fill('REGION',        d.region);
+    fill('COUNTRY',       d.country_name ? `${d.country_name} (${d.country_code})` : d.country_code);
+    fill('ISP / ORG',     d.org);
+    fill('LATITUDE',      d.latitude  != null ? String(d.latitude)  : null);
+    fill('LONGITUDE',     d.longitude != null ? String(d.longitude) : null);
+    fill('ASN',           d.asn);
+    fill('TIMEZONE (IP)', d.timezone);
   } catch (_) {
-    for (const key of ipKeys) {
-      const span = ipValueSpans[key];
-      span.className = 'recon-na';
-      span.textContent = 'REQUEST BLOCKED';
-    }
+    clearTimeout(timeout);
+    for (const key of ipKeys) { ipValueSpans[key].className = 'recon-na'; ipValueSpans[key].textContent = 'REQUEST BLOCKED'; }
+  }
+
+  /* ---------- Save to Firestore ---------- */
+  try {
+    await addDoc(collection(db, 'visitors'), {
+      timestamp: serverTimestamp(),
+      // Network / IP
+      ip:           ipData.ip           || null,
+      city:         ipData.city         || null,
+      region:       ipData.region       || null,
+      country:      ipData.country_name || null,
+      countryCode:  ipData.country_code || null,
+      isp:          ipData.org          || null,
+      latitude:     ipData.latitude     ?? null,
+      longitude:    ipData.longitude    ?? null,
+      asn:          ipData.asn          || null,
+      timezoneIP:   ipData.timezone     || null,
+      // Browser
+      userAgent:    ua,
+      browser:      `${browser.name} ${browser.version}`,
+      engine,
+      cookiesEnabled: navigator.cookieEnabled,
+      doNotTrack:   navigator.doNotTrack || null,
+      localStorage: lsAvail,
+      sessionStorage: ssAvail,
+      pdfViewer,
+      // OS / Device
+      os,
+      platform:     navigator.platform  || null,
+      cpuCores:     navigator.hardwareConcurrency ?? null,
+      deviceMemory: navigator.deviceMemory        ?? null,
+      touchPoints:  navigator.maxTouchPoints,
+      deviceType,
+      // Screen
+      screenResolution: `${screen.width}×${screen.height}`,
+      availResolution:  `${screen.availWidth}×${screen.availHeight}`,
+      viewport:         `${window.innerWidth}×${window.innerHeight}`,
+      colorDepth:   screen.colorDepth,
+      pixelRatio:   window.devicePixelRatio,
+      orientation:  orientation || null,
+      // Graphics
+      gpuRenderer:  webgl.renderer || null,
+      gpuVendor:    webgl.vendor   || null,
+      webglVersion: webgl.version  || null,
+      maxTextureSize: webgl.maxTex ?? null,
+      // Network client
+      connectionType: conn?.effectiveType  || null,
+      downlink:       conn?.downlink       ?? null,
+      saveData:       conn?.saveData       ?? null,
+      online:         navigator.onLine,
+      // Locale
+      language:     navigator.language,
+      languages:    (navigator.languages || [navigator.language]).join(', '),
+      timezone:     Intl.DateTimeFormat().resolvedOptions().timeZone,
+      utcOffset,
+      // Preferences
+      colorScheme,
+      reducedMotion,
+      highContrast,
+      // Fingerprint / Misc
+      canvasFingerprint: cfp || null,
+      pluginsCount: navigator.plugins.length,
+      referrer:     document.referrer || 'DIRECT',
+      javaEnabled,
+      pageLoadMs:   loadTime || null,
+    });
+  } catch (err) {
+    console.warn('Firestore write failed:', err);
   }
 }
 
