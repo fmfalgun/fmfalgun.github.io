@@ -130,6 +130,18 @@
     </div>
   </footer>
 
+  <!-- MOBILE TOC (bottom-right FAB, visible below 900px) -->
+  <div class="mobile-toc" id="mobile-toc">
+    <div class="mobile-toc-drawer" id="mobile-toc-drawer" aria-hidden="true">
+      <ul class="mobile-toc-list" id="mobile-toc-list">
+        <!-- populated by operativesController.js after groups render -->
+      </ul>
+    </div>
+    <button class="mobile-toc-trigger" id="mobile-toc-trigger" aria-expanded="false" aria-controls="mobile-toc-drawer">
+      SECTIONS ▾
+    </button>
+  </div>
+
   <!-- Nav controller (hamburger menu) -->
   <script type="module" src="src/controllers/navController.js"></script>
   <!-- Operatives data loader + renderer -->

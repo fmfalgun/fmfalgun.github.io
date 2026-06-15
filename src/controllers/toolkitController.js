@@ -429,6 +429,95 @@ function updateStats(visibleTools) {
   `;
 }
 
+/* ─── Mobile TOC ────────────────────────────────────────────── */
+
+function buildMobileToc() {
+  const list = document.getElementById('mobile-toc-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  let lastCategory = null;
+
+  document.querySelectorAll('.tool-phase-group').forEach(group => {
+    const categoryName = group.dataset.category || '';
+    const groupTitle   = group.querySelector('.group-title');
+    if (!groupTitle) return;
+
+    // Emit a non-clickable category label whenever the category changes
+    if (categoryName && categoryName !== lastCategory) {
+      const labelLi = document.createElement('li');
+      labelLi.className = 'mobile-toc-category-label';
+      labelLi.textContent = categoryName;
+      list.appendChild(labelLi);
+      lastCategory = categoryName;
+    }
+
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href        = '#' + group.id;
+    a.textContent = groupTitle.textContent;
+
+    a.addEventListener('click', e => {
+      e.preventDefault();
+
+      // Close drawer
+      const drawer  = document.getElementById('mobile-toc-drawer');
+      const trigger = document.getElementById('mobile-toc-trigger');
+      if (drawer)  { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+      if (trigger) { trigger.setAttribute('aria-expanded', 'false'); trigger.textContent = 'SECTIONS ▾'; }
+
+      // Find target group
+      const target = document.getElementById(group.id);
+      if (!target) return;
+
+      // Expand the group if collapsed
+      const groupBtn = target.querySelector(':scope > .group-toggle-btn');
+      if (groupBtn && groupBtn.getAttribute('aria-expanded') === 'false') {
+        setGroupOpen(groupBtn, true);
+      }
+
+      // Also expand the parent category if collapsed
+      const parentCategory = target.closest('.tool-category');
+      if (parentCategory) {
+        const catBtn = parentCategory.querySelector(':scope > .category-toggle-btn');
+        if (catBtn && catBtn.getAttribute('aria-expanded') === 'false') {
+          setGroupOpen(catBtn, true);
+        }
+      }
+
+      // After expanding (transitions are 0.3s), scroll
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 320);
+    });
+
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
+function initMobileToc() {
+  const trigger = document.getElementById('mobile-toc-trigger');
+  const drawer  = document.getElementById('mobile-toc-drawer');
+  if (!trigger || !drawer) return;
+
+  trigger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', String(isOpen));
+    drawer.setAttribute('aria-hidden', String(!isOpen));
+    trigger.textContent = isOpen ? 'SECTIONS ▴' : 'SECTIONS ▾';
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#mobile-toc') && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      trigger.textContent = 'SECTIONS ▾';
+    }
+  });
+}
+
 /* ─── Main loader ───────────────────────────────────────────── */
 
 async function loadToolkit() {
@@ -494,6 +583,8 @@ async function loadToolkit() {
   initOutlineClicks();
   initFilterChips();
   initSearch();
+  buildMobileToc();
+  initMobileToc();
 }
 
 /* ─── Boot ──────────────────────────────────────────────────── */

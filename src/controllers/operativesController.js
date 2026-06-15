@@ -350,6 +350,78 @@ function initOutline(sectionsContainer, outlineList) {
 }
 
 /**
+ * Populate #mobile-toc-list from the already-rendered .operative-group elements.
+ */
+function buildMobileToc() {
+  const list = document.getElementById('mobile-toc-list');
+  const trigger = document.getElementById('mobile-toc-trigger');
+  const drawer  = document.getElementById('mobile-toc-drawer');
+  if (!list) return;
+
+  const groups = document.querySelectorAll('.operative-group');
+  groups.forEach(group => {
+    const domain = group.dataset.domain || group.id;
+    const id     = group.id;
+
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href        = `#${id}`;
+    a.textContent = domain;
+
+    a.addEventListener('click', e => {
+      e.preventDefault();
+
+      // Close the drawer
+      if (drawer) {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.textContent = 'SECTIONS ▾';
+      }
+
+      // Expand the target group if collapsed
+      const target = document.getElementById(id);
+      if (target) {
+        ensureExpanded(target);
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    });
+
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
+/**
+ * Wire up the mobile TOC FAB toggle and outside-click close.
+ */
+function initMobileToc() {
+  const trigger = document.getElementById('mobile-toc-trigger');
+  const drawer  = document.getElementById('mobile-toc-drawer');
+  if (!trigger || !drawer) return;
+
+  trigger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', String(isOpen));
+    drawer.setAttribute('aria-hidden', String(!isOpen));
+    trigger.textContent = isOpen ? 'SECTIONS ▴' : 'SECTIONS ▾';
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#mobile-toc') && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      trigger.textContent = 'SECTIONS ▾';
+    }
+  });
+}
+
+/**
  * Main entry point — called on DOMContentLoaded.
  */
 async function initOperatives() {
@@ -394,6 +466,10 @@ async function initOperatives() {
   if (chipsContainer) initFilterChips(chipsContainer, domainKeys, sectionsContainer, outlineList);
   if (searchInput)    initSearch(searchInput, sectionsContainer, outlineList);
   if (outlineList)    initOutline(sectionsContainer, outlineList);
+
+  // 6. Mobile TOC
+  buildMobileToc();
+  initMobileToc();
 }
 
 document.addEventListener('DOMContentLoaded', initOperatives);

@@ -5,6 +5,13 @@
   max-height: calc(100vh - 130px);
   overflow-y: auto;
   z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.home-outline.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .home-outline .outline-header {
@@ -41,4 +48,77 @@
 
 @media (max-width: 1200px) {
   .home-outline { display: none; }
+}
+
+/* ── Mobile TOC ── */
+.mobile-toc {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .mobile-toc {
+    display: block;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 80;
+  }
+
+  .mobile-toc-trigger {
+    background: var(--amber);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+
+  .mobile-toc-drawer {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  }
+
+  .mobile-toc-drawer.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-toc-list li:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-toc-list a {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    padding: 0.65rem 1rem;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .mobile-toc-list a:hover {
+    color: var(--amber);
+    background: rgba(212,136,42,0.06);
+  }
 }
