@@ -242,7 +242,226 @@
   color: var(--dim);
 }
 
-/* RESPONSIVE */
+/* ===========================
+   FILTER PANEL
+   =========================== */
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.search-wrap input {
+  width: 100%;
+  background: var(--black);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+.search-wrap input:focus {
+  border-color: var(--amber);
+}
+.search-wrap input::placeholder {
+  color: var(--dim);
+}
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.filter-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+  min-width: 90px;
+  letter-spacing: 0.1em;
+}
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chip {
+  background: var(--black);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip.active,
+.chip:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* ===========================
+   TWO-COLUMN LAYOUT
+   =========================== */
+.content-with-outline {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ===========================
+   TOOLKIT SECTIONS CONTAINER
+   =========================== */
+.toolkit-sections {
+  min-width: 0;
+}
+
+/* ===========================
+   STICKY OUTLINE
+   =========================== */
+.page-outline {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.outline-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.12em;
+}
+.outline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.outline-category-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--khaki);
+  margin-top: 0.75rem;
+  padding: 0.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.outline-item a {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  padding: 0.25rem 0 0.25rem 0.75rem;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+}
+.outline-item a:hover,
+.outline-item.outline-active a {
+  color: var(--amber);
+  border-left-color: var(--amber);
+}
+
+/* ===========================
+   COLLAPSIBLE GROUPS
+   =========================== */
+.tool-category {
+  margin-bottom: 2rem;
+}
+.category-toggle-btn,
+.group-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  padding: 1rem 0;
+  text-align: left;
+}
+.category-toggle-btn:hover,
+.group-toggle-btn:hover {
+  border-bottom-color: var(--amber);
+}
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--cream);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.group-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+}
+.badge {
+  background: var(--green);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+}
+.toggle-arrow {
+  margin-left: auto;
+  color: var(--amber);
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+[aria-expanded="false"] > .toggle-arrow {
+  transform: rotate(-90deg);
+}
+
+.category-body,
+.group-body {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.group-body .tools-grid {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.tool-phase-group {
+  margin-bottom: 1rem;
+}
+.tool-phase-group:last-child {
+  margin-bottom: 0;
+}
+
+.category-body {
+  padding-left: 0.5rem;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 900px) {
+  .content-with-outline {
+    grid-template-columns: 1fr;
+  }
+  .page-outline {
+    display: none;
+  }
+  .filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 768px) {
   .toolkit-hero { padding: 6rem 0 2.5rem; }
   .toolkit-grid {

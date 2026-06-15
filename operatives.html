@@ -68,8 +68,6 @@
       <div class="nav-logo">FM<span class="accent">//</span>SEC</div>
       <ul class="nav-links" role="list">
         <li><a href="index.html">HOME</a></li>
-        <li><a href="index.html#about">ABOUT</a></li>
-        <li><a href="index.html#projects">PROJECTS</a></li>
         <li><a href="operatives.html" class="nav-active">OPERATIVES</a></li>
         <li><a href="toolkit.html">TOOLKIT</a></li>
         <li><a href="falgun_resume.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">RESUME ↗</a></li>
@@ -96,9 +94,29 @@
     <!-- OPERATIVES GRID -->
     <section class="operatives-section">
       <div class="container">
-        <div id="operatives-grid">
-          <!-- JS renders domain groups + cards here -->
+
+        <!-- CONTROLS: search + filter chips -->
+        <div class="page-controls">
+          <div class="search-wrap">
+            <input type="search" id="search-input" placeholder="Search operatives..." autocomplete="off" aria-label="Search operatives" />
+          </div>
+          <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter by domain">
+            <button class="chip active" data-domain="all">ALL</button>
+            <!-- JS inserts one chip per domain -->
+          </div>
         </div>
+
+        <!-- TWO-COLUMN: section groups + sticky outline -->
+        <div class="content-with-outline">
+          <div class="operatives-sections" id="operatives-sections">
+            <!-- JS renders domain groups here -->
+          </div>
+          <aside class="page-outline" id="page-outline" aria-label="Page outline">
+            <div class="outline-header">// OUTLINE</div>
+            <ul class="outline-list" id="outline-list"></ul>
+          </aside>
+        </div>
+
       </div>
     </section>
   </main>

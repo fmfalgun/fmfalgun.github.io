@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="assets/css/components/hero.css" />
   <link rel="stylesheet" href="assets/css/components/cards.css" />
   <link rel="stylesheet" href="assets/css/components/contact.css" />
+  <link rel="stylesheet" href="assets/css/components/home-outline.css" />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -80,12 +81,7 @@
     <div class="nav-inner">
       <div class="nav-logo">FM<span class="accent">//</span>SEC</div>
       <ul class="nav-links" role="list">
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
-        <li><a href="#publications">REPORTS</a></li>
-        <li><a href="#repositories">REPOS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="index.html" class="nav-active">HOME</a></li>
         <li><a href="operatives.html">OPERATIVES</a></li>
         <li><a href="toolkit.html">TOOLKIT</a></li>
         <li><a href="falgun_resume.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">RESUME ↗</a></li>
@@ -501,11 +497,26 @@
     </div>
   </footer>
 
+  <!-- HOME OUTLINE — right-side sticky section navigator -->
+  <aside class="home-outline" id="home-outline" aria-label="Page sections">
+    <div class="outline-header">// SECTIONS</div>
+    <ul class="outline-list">
+      <li class="outline-item" data-target="recon"><a href="#recon">PASSIVE RECON</a></li>
+      <li class="outline-item" data-target="about"><a href="#about">ABOUT</a></li>
+      <li class="outline-item" data-target="skills"><a href="#skills">SKILLS</a></li>
+      <li class="outline-item" data-target="projects"><a href="#projects">PROJECTS</a></li>
+      <li class="outline-item" data-target="publications"><a href="#publications">REPORTS</a></li>
+      <li class="outline-item" data-target="repositories"><a href="#repositories">REPOS</a></li>
+      <li class="outline-item" data-target="contact"><a href="#contact">CONTACT</a></li>
+    </ul>
+  </aside>
+
   <!-- MVC Controllers & Views (ES Modules) -->
   <script type="module" src="src/controllers/navController.js"></script>
   <script type="module" src="src/controllers/animationController.js"></script>
   <script type="module" src="src/views/hero.js"></script>
   <script type="module" src="src/controllers/reconController.js"></script>
+  <script type="module" src="src/controllers/homeOutlineController.js"></script>
 
 </body>
 </html>

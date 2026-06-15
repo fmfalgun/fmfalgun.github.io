@@ -53,8 +53,6 @@
       <div class="nav-logo">FM<span class="accent">//</span>SEC</div>
       <ul class="nav-links" role="list">
         <li><a href="index.html">HOME</a></li>
-        <li><a href="index.html#about">ABOUT</a></li>
-        <li><a href="index.html#projects">PROJECTS</a></li>
         <li><a href="operatives.html">OPERATIVES</a></li>
         <li><a href="toolkit.html" class="nav-active">TOOLKIT</a></li>
         <li><a href="falgun_resume.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">RESUME ↗</a></li>
@@ -83,9 +81,59 @@
       </div>
     </section>
 
+    <!-- FILTER PANEL -->
+    <div class="container">
+      <div class="filter-panel" id="filter-panel">
+        <div class="search-wrap">
+          <input type="search" id="search-input" placeholder="Search toolkit..." autocomplete="off" aria-label="Search tools" />
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">PHASE</span>
+          <div class="filter-chips" data-filter-type="phase" role="group">
+            <button class="chip active" data-value="all">ALL</button>
+            <button class="chip" data-value="Phase 1 — Reconnaissance">RECON</button>
+            <button class="chip" data-value="Phase 2 — Scanning &amp; Enumeration">SCANNING</button>
+            <button class="chip" data-value="unix">UNIX</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">CATEGORY</span>
+          <div class="filter-chips" data-filter-type="category" role="group">
+            <button class="chip active" data-value="all">ALL</button>
+            <button class="chip" data-value="Hacking Tools">HACKING</button>
+            <button class="chip" data-value="Unix Tools">UNIX TOOLS</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">LANGUAGE</span>
+          <div class="filter-chips" id="lang-chips" data-filter-type="language" role="group">
+            <button class="chip active" data-value="all">ALL</button>
+            <!-- populated dynamically -->
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">AUTHOR / ORG</span>
+          <div class="filter-chips" id="org-chips" data-filter-type="org" role="group">
+            <button class="chip active" data-value="all">ALL</button>
+            <!-- populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TOOLKIT CONTENT — populated by toolkitController.js -->
     <div id="toolkit-root" role="region" aria-label="Toolkit tools">
-      <!-- JS renders category sections here -->
+      <div class="container">
+        <div class="content-with-outline">
+          <div class="toolkit-sections" id="toolkit-sections">
+            <!-- JS renders category + phase groups here -->
+          </div>
+          <aside class="page-outline" id="page-outline" aria-label="Page outline">
+            <div class="outline-header">// OUTLINE</div>
+            <ul class="outline-list" id="outline-list"></ul>
+          </aside>
+        </div>
+      </div>
     </div>
 
   </main>

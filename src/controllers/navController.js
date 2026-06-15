@@ -1,8 +1,6 @@
 const navbar   = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.querySelector('.nav-links');
-const sections  = document.querySelectorAll('section[id]');
-const anchors   = document.querySelectorAll('.nav-links a[href^="#"]');
 
 function closeMenu() {
   navLinks.classList.remove('open');
@@ -12,21 +10,10 @@ function closeMenu() {
   hamburger.querySelectorAll('span')[2].style.transform = '';
 }
 
-function updateScrollSpy() {
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-  });
-  anchors.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-  });
-}
-
 window.addEventListener('scroll', () => {
   navbar.style.background = window.scrollY > 50
     ? 'rgba(13,15,10,0.97)'
     : 'rgba(13,15,10,0.85)';
-  updateScrollSpy();
 }, { passive: true });
 
 hamburger.addEventListener('click', () => {

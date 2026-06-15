@@ -1,0 +1,44 @@
+.home-outline {
+  position: fixed;
+  right: 1.5rem;
+  top: 110px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.home-outline .outline-header {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.home-outline .outline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-outline .outline-item a {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--dim);
+  padding: 0.25rem 0 0.25rem 0.75rem;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.04em;
+}
+
+.home-outline .outline-item a:hover,
+.home-outline .outline-item.outline-active a {
+  color: var(--amber);
+  border-left-color: var(--amber);
+}
+
+@media (max-width: 1200px) {
+  .home-outline { display: none; }
+}
