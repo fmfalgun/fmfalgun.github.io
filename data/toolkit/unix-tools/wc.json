@@ -1,0 +1,14 @@
+{
+  "name": "wc",
+  "purpose": "Count lines, words, and bytes in files or stdin — the universal pipeline sanity-check",
+  "author": "Ken Thompson",
+  "org": "Bell Labs (AT&T); GNU coreutils (Jim Meyering)",
+  "year": "1971",
+  "language": "C",
+  "phase": null,
+  "category": "Unix Tools",
+  "why_notable": "wc shipped with Unix Version 1 (1971), written by Ken Thompson — co-creator of Unix with Dennis Ritchie, co-inventor of C, and later co-creator of Go at Google. It has three flags (-l lines, -w words, -c bytes) that have not changed in over 50 years across every Unix, Linux, macOS, and BSD system in existence. In security work wc -l is used constantly: verifying wordlist downloads (expected 20000, got 14 means the download failed), counting subdomain findings, checking deduplication (sort -u | wc -l vs wc -l reveals duplicates), and sanity-checking pipeline output. Its composability is its value — every tool that produces line-separated output can be piped into wc -l. The Linux version is part of GNU coreutils, maintained by Jim Meyering.",
+  "links": {
+    "GNU coreutils": "https://www.gnu.org/software/coreutils/"
+  }
+}

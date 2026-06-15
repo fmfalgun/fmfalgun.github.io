@@ -1,0 +1,14 @@
+{
+  "name": "Google Dorks",
+  "purpose": "Passive reconnaissance using Google's advanced search operators to surface sensitive data indexed from misconfigured targets",
+  "author": "Johnny Long (j0hnny)",
+  "org": "Offensive Security (GHDB host); Solutionary (Long's employer)",
+  "year": "2004",
+  "language": "Technique / web-based",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Johnny Long systematized Google Hacking in 2004 with the book 'Google Hacking for Penetration Testers' and the Google Hacking Database (GHDB) at exploit-db.com — now containing 6,500+ community-maintained queries organized by category (exposed credentials, login portals, vulnerable servers, sensitive directories, IoT devices). The technique relies on a fundamental property of search engines: they index everything they can crawl, including content never meant to be public. All queries go to Google's servers, not the target — it's fully passive. Long framed Google as a force multiplier: a security auditor could find exposed admin panels without touching the target because Google already had the index.",
+  "links": {
+    "GHDB": "https://www.exploit-db.com/google-hacking-database"
+  }
+}

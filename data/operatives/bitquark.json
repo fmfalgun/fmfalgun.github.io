@@ -1,0 +1,11 @@
+{
+  "name": "Bitquark",
+  "handle": "bitquark",
+  "domain": "Anonymous / Unknown",
+  "era": "~2014–2015",
+  "org": "Unknown",
+  "why_notable": "Published bitquark-subdomains-top100000.txt — a 100,000-entry subdomain wordlist compiled from web crawl data, making it structurally different from the CT log + passive DNS methodology behind Jason Haddix's top1million series. The list was picked up by SecLists and became a standard complement because the two datasets have different blind spots: crawl data catches subdomains that were never formally registered in CT logs; passive DNS catches ones that had live DNS records. Nobody knows who bitquark actually is — no blog, no conference presence, no linked profiles. The methodology matters more than the identity.",
+  "links": {
+    "GitHub": "https://github.com/bitquark"
+  }
+}

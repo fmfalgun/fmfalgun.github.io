@@ -1,0 +1,12 @@
+{
+  "name": "Brewster Kahle",
+  "handle": null,
+  "domain": "Search Engine Hacking & Web Archives",
+  "era": "1996–present",
+  "org": "Internet Archive (founder); Thinking Machines; WAIS Inc.",
+  "why_notable": "Founded the Internet Archive (1996) with the mission of universal access to all knowledge. Built the Wayback Machine — which stores 800+ billion archived web pages — and the CDX (Capture Index) API that tools like waybackurls query to retrieve historical URLs. Without the Internet Archive, a major class of passive recon disappears entirely: no historical URL enumeration, no dead-endpoint surfacing, no parameter archaeology. Also created WAIS, a precursor to web search. One of the few people to build a lasting public-good internet institution.",
+  "links": {
+    "Internet Archive": "https://archive.org",
+    "Wayback Machine": "https://web.archive.org"
+  }
+}

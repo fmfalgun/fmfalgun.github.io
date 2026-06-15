@@ -1,0 +1,14 @@
+{
+  "name": "dig",
+  "purpose": "DNS query and diagnostic tool — sends arbitrary DNS queries and displays raw responses",
+  "author": "Kevin Dunlap, Mike Karels, David Riggle (BIND); Paul Vixie (ISC maintainer)",
+  "org": "UC Berkeley (BIND origin); ISC — Internet Systems Consortium",
+  "year": "1984",
+  "language": "C",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "dig (Domain Information Groper) shipped as a companion to BIND — the first DNS server, written at UC Berkeley in 1984. DNS itself was invented by Paul Mockapetris (USC/ISI) in 1983 to replace a single hand-maintained text file that couldn't scale. dig outlasted nslookup because it sends exactly what you specify, shows the full response (question, answer, authority, additional sections, flags, timing), and never adds unexpected resolver suffixes. The AXFR zone transfer query is dig's most impactful recon use: a misconfigured nameserver responding to AXFR dumps every record in the zone in one request — the complete internal DNS map. ISC's Paul Vixie took over BIND maintenance in the late 1980s and founded ISC specifically to maintain DNS infrastructure as a public good.",
+  "links": {
+    "ISC BIND": "https://www.isc.org/bind/"
+  }
+}

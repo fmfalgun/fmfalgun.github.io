@@ -32,8 +32,10 @@
   transition: color .2s;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--cream); }
-.nav-links a.active { border-bottom: 1px solid var(--amber); padding-bottom: 1px; }
+.nav-links a.active,
+.nav-links a.nav-active { color: var(--cream); }
+.nav-links a.active,
+.nav-links a.nav-active { border-bottom: 1px solid var(--amber); padding-bottom: 1px; }
 .nav-cta {
   border: 1px solid var(--amber) !important;
   color: var(--amber) !important;

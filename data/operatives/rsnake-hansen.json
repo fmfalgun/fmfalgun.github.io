@@ -1,0 +1,12 @@
+{
+  "name": "Robert Hansen",
+  "handle": "RSnake",
+  "domain": "Reconnaissance & OSINT Tools",
+  "era": "~2004–present",
+  "org": "ha.ckers.org (founder); WhiteHat Security (co-founder); DARPA contractor",
+  "why_notable": "One of the most influential web security researchers of the 2000s. Created fierce.pl (2006) — the first DNS brute-force and zone transfer tool, the direct ancestor of modern subdomain enumeration. Ran ha.ckers.org, the central web security forum before Twitter existed. Co-coined 'clickjacking' with Jeremiah Grossman (2008). Wrote Slowloris (2009) — the HTTP DoS tool that exposed Apache's thread exhaustion model. His XSS filter evasion cheat sheet is still referenced by OWASP today.",
+  "links": {
+    "Twitter/X": "https://twitter.com/RSnake",
+    "ha.ckers.org (archived)": "https://web.archive.org/web/*/ha.ckers.org"
+  }
+}

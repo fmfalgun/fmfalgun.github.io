@@ -1,0 +1,14 @@
+{
+  "name": "subfinder",
+  "purpose": "Passive subdomain enumeration via 40+ public sources including CT logs, passive DNS, and security APIs",
+  "author": "Bhomesh Koli (Ice3man543)",
+  "org": "ProjectDiscovery",
+  "year": "2018",
+  "language": "Go",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Bhomesh Koli, an Indian bug bounty hunter, wrote subfinder in Go around 2018 to fix the core problems of Python-based predecessors (sublist3r, knock) — serial HTTP requests, constant rate-limiting, no structured output. Go goroutines let subfinder query 50+ passive DNS APIs simultaneously at almost zero overhead, producing a deduplicated list with zero packets sent to the target. It became the flagship tool of ProjectDiscovery, which grew into a full security tooling company (Series A: $25M in 2024). The Chaos dataset — a continuously updated database of subdomains for every major bug bounty program — is one of subfinder's most valuable sources and a ProjectDiscovery contribution to the community.",
+  "links": {
+    "GitHub": "https://github.com/projectdiscovery/subfinder"
+  }
+}

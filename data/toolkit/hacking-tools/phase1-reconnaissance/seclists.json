@@ -1,0 +1,14 @@
+{
+  "name": "SecLists",
+  "purpose": "The community-standard wordlist collection for security testing — DNS labels, web paths, passwords, fuzzing payloads, and more",
+  "author": "Daniel Miessler; major contributor Jason Haddix",
+  "org": "Open source community (GitHub)",
+  "year": "2012",
+  "language": "Data / text",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Daniel Miessler started SecLists in 2012 as his personal wordlist collection. The decisive moment came in 2015 when Jason Haddix, Head of Research at Bugcrowd, contributed the subdomains-top1million series — frequency-ranked DNS labels mined from real Certificate Transparency logs and passive DNS databases rather than guessed from intuition. This replaced every existing DNS wordlist as the community standard overnight. The repo reached 58,000+ GitHub stars and is now pre-installed to /usr/share/seclists/ on Kali Linux and Parrot OS. Popular security tools (gobuster, ffuf, nuclei) document SecLists paths as canonical examples, making those paths stable API contracts — Miessler treats path stability as a first-class concern.",
+  "links": {
+    "GitHub": "https://github.com/danielmiessler/SecLists"
+  }
+}

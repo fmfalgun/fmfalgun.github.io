@@ -1,0 +1,14 @@
+{
+  "name": "WhatWeb",
+  "purpose": "Web technology fingerprinting — identifies CMS, frameworks, server software, analytics, and JavaScript libraries via 1800+ plugins",
+  "author": "Andrew Horton (urbanadventurer); Brendan Coles (bcoles)",
+  "org": "MorningStar Security",
+  "year": "2009",
+  "language": "Ruby",
+  "phase": "Phase 2 — Scanning & Enumeration",
+  "category": "Hacking Tools",
+  "why_notable": "Andrew Horton (New Zealand) built WhatWeb around 2009 because before it, web technology fingerprinting meant manually checking headers, reading source, and guessing CMS paths — workable for one target, impractical for 50 subdomains. The plugin architecture is its key design achievement: adding detection for a new technology is ~5 lines of Ruby DSL (text patterns, version regexes, or MD5 hashes), which lowered the contribution barrier enough to sustain 1800+ plugins from the community. Included in Kali Linux from the BackTrack era, it established the standard Phase 2 pattern that every pentest pipeline now follows: fingerprint the stack with WhatWeb, then route to the CMS-specific scanner (wpscan, joomscan, nikto). Its JSON output integrates cleanly into automated pipelines.",
+  "links": {
+    "GitHub": "https://github.com/urbanadventurer/WhatWeb"
+  }
+}

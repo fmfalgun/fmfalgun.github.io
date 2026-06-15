@@ -1,0 +1,11 @@
+{
+  "name": "Jim Meyering",
+  "handle": null,
+  "domain": "Unix / Systems Foundations",
+  "era": "1990s–present",
+  "org": "GNU Project; Red Hat",
+  "why_notable": "Primary author and long-time maintainer of GNU coreutils — the package that provides wc, ls, cat, cp, mv, grep, sort, uniq, and dozens of other utilities on every Linux system. The wc you run on Garuda Linux is his implementation. When pentesters pipe output between tools, sort results, or count lines, they are running Meyering's code. The invisible infrastructure under every terminal session.",
+  "links": {
+    "GitHub": "https://github.com/meyering"
+  }
+}

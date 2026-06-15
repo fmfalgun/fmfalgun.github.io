@@ -1,0 +1,11 @@
+{
+  "name": "Corben Leo",
+  "handle": "lc",
+  "domain": "Pentest Tools & Bug Bounty Research",
+  "era": "~2017–present",
+  "org": "Independent researcher / bug bounty community",
+  "why_notable": "Author of gau (GetAllURLs) — a Go tool that aggregates historical URLs from four sources in a single pass: Wayback Machine (CDX API), Common Crawl, AlienVault OTX, and URLScan.io. The key insight over waybackurls (which only queries Wayback) is that each source captures different URL sets: OTX sees URLs from malware and phishing feeds, URLScan sees anything submitted for security scanning, Common Crawl has petabyte-scale web crawl coverage. Combining all four dramatically increases the historical URL surface revealed before active scanning even begins.",
+  "links": {
+    "GitHub": "https://github.com/lc"
+  }
+}

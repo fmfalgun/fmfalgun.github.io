@@ -1,0 +1,14 @@
+{
+  "name": "DNSdumpster",
+  "purpose": "Web-based DNS recon — aggregates passive DNS, CT logs, BGP data, and generates a visual network graph",
+  "author": "HackerTarget",
+  "org": "HackerTarget (Australia)",
+  "year": "2013",
+  "language": "Web service",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Built by Australian network security company HackerTarget around 2013, DNSdumpster's key innovation was the downloadable visual network graph at a time when every DNS tool produced only raw text. It combined passive DNS aggregation, CT log data, BGP routing tables, and MX/NS/TXT records in one view — showing hostname relationships and ASN ownership at a glance, instantly usable in a client report. It became the standard first-look tool in the 2014–2018 era before CLI tools like subfinder and amass rose to prominence. It remains relevant for quick no-setup lookups and for its uniquely useful visual output.",
+  "links": {
+    "DNSdumpster": "https://dnsdumpster.com"
+  }
+}

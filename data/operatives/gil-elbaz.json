@@ -1,0 +1,11 @@
+{
+  "name": "Gil Elbaz",
+  "handle": null,
+  "domain": "Wordlists & Data Sources",
+  "era": "1990s–present",
+  "org": "Applied Semantics (co-founder, acquired by Google 2003); Factual (founder); Common Crawl (founder)",
+  "why_notable": "Founded Common Crawl (2007) — the nonprofit that runs monthly petabyte-scale web crawls and publishes the raw data publicly on S3. Common Crawl is the upstream data source that Assetnote mines to generate its wordlists and that gau queries for historical URLs. Without Common Crawl, the data-driven wordlist methodology doesn't exist. Also founded Applied Semantics (acquired by Google, became the basis for AdSense targeting) and Factual (location data, acquired by Foursquare).",
+  "links": {
+    "Common Crawl": "https://commoncrawl.org"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Jeremiah Grossman",
+  "handle": null,
+  "domain": "Reconnaissance & OSINT Tools",
+  "era": "2000s–present",
+  "org": "Yahoo (security lead); WhiteHat Security (founder); Bishop Fox",
+  "why_notable": "Co-named and co-researched the clickjacking attack class with RSnake Hansen (2008) — a browser-level attack where a transparent iframe tricks users into clicking hidden elements. Founded WhiteHat Security, one of the early application security companies. Significant contributor to web security research across XSS, CSRF, and browser-based attack surface. His work on browser security directly shaped how the field thinks about client-side attack vectors.",
+  "links": {
+    "Twitter/X": "https://twitter.com/jeremiahg"
+  }
+}

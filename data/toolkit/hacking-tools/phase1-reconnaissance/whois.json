@@ -1,0 +1,14 @@
+{
+  "name": "whois",
+  "purpose": "Domain and IP registration data lookup",
+  "author": "Ken Harrenstien & Vic White (RFC 812); Marco d'Itri (modern Linux CLI)",
+  "org": "SRI-NIC (origin); Marco d'Itri (Linux maintainer)",
+  "year": "1982",
+  "language": "C",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "whois was born on ARPANET in 1982 as a hand-maintained text file of every machine on the early internet, run by Elizabeth 'Jake' Feinler at SRI-NIC. The RFC 812 protocol — connect to TCP port 43, send a query, get text back — has barely changed in over 40 years. Today the Linux CLI (maintained by Marco d'Itri) auto-routes queries to the correct RIR or registrar. GDPR (2018) largely redacted registrant personal data, so modern value lies in registrar name, creation/expiry dates, nameservers, and status flags. It's the first tool in any recon chain: it tells you who controls DNS before you send a single packet to the target.",
+  "links": {
+    "RFC 812": "https://www.rfc-editor.org/rfc/rfc812"
+  }
+}

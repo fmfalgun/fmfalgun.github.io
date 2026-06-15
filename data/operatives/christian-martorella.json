@@ -1,0 +1,12 @@
+{
+  "name": "Christian Martorella",
+  "handle": "laramies",
+  "domain": "Reconnaissance & OSINT Tools",
+  "era": "~2008–present",
+  "org": "Edge-Security (Spanish security research group)",
+  "why_notable": "Created theHarvester — the first tool to aggregate passive OSINT (emails, subdomains, IPs, hostnames) from multiple search engines and public APIs in a single script. Before theHarvester, this meant querying each source manually. Now at v4 with 40+ sources, it remains the canonical OSINT aggregator. Also created metagoofil for metadata extraction from public documents. His work defined what passive recon tooling looks like.",
+  "links": {
+    "GitHub": "https://github.com/laramies",
+    "Twitter/X": "https://twitter.com/laramies"
+  }
+}

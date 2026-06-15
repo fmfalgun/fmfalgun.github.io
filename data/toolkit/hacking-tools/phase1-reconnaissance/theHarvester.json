@@ -1,0 +1,14 @@
+{
+  "name": "theHarvester",
+  "purpose": "OSINT aggregator for emails, subdomains, and hostnames from public sources",
+  "author": "Christian Martorella (laramies)",
+  "org": "Edge-Security",
+  "year": "2008",
+  "language": "Python",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Written by Spanish researcher Christian Martorella around 2008 to automate the tedium of manually Googling a target's email addresses across multiple search engines. It became the canonical OSINT aggregator after being bundled into BackTrack Linux around 2010 — once in BackTrack, every pentest course and certification (OSCP, CEH, SANS) referenced it, making it the industry default. The v4 rewrite (2019) introduced async HTTP via aiohttp and 40+ source modules, each as a separate Python class. It's most useful with API keys configured in api-keys.yaml; without them, Google blocks scraping and many sources silently fail.",
+  "links": {
+    "GitHub": "https://github.com/laramies/theHarvester"
+  }
+}

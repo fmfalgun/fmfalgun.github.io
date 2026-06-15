@@ -1,0 +1,14 @@
+{
+  "name": "crt.sh",
+  "purpose": "Certificate Transparency log search — passive subdomain enumeration via publicly logged TLS certificates",
+  "author": "Rob Stradling",
+  "org": "Sectigo (formerly Comodo CA)",
+  "year": "2015",
+  "language": "PostgreSQL / Web",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Rob Stradling at Sectigo built crt.sh in 2015 as a PostgreSQL-backed search engine over Certificate Transparency logs — a system designed by Google's Ben Laurie and Adam Langley (RFC 6962, 2013) to prevent fraudulent certificate issuance. Google made CT submission mandatory for Chrome trust in April 2018, creating an unintended side effect: every subdomain a company gives a TLS certificate to becomes publicly logged within minutes. crt.sh makes this searchable with no API key required. A notable finding class it enables is SAN leaks — when a certificate's Subject Alternative Names expose infrastructure hostnames the organization never intended to publicize.",
+  "links": {
+    "crt.sh": "https://crt.sh"
+  }
+}

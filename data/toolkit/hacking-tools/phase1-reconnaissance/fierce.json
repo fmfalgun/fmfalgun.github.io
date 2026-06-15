@@ -1,0 +1,14 @@
+{
+  "name": "fierce",
+  "purpose": "Active DNS brute-force with zone transfer attempts, wildcard detection, and IP range reverse-DNS sweep",
+  "author": "Robert 'RSnake' Hansen (original Perl); mschwager (Python rewrite)",
+  "org": "ha.ckers.org (origin)",
+  "year": "2006",
+  "language": "Perl (original); Python (current)",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Robert 'RSnake' Hansen wrote fierce.pl in 2006 as the first tool to combine DNS AXFR zone transfer attempts with active brute-force in a single pass. RSnake is one of the most influential web security researchers of the 2000s — he ran ha.ckers.org, the pre-social-media hub for web security discussion, and co-coined clickjacking and wrote Slowloris. fierce's wide scan feature (PTR reverse-lookups across the IP range of discovered hosts) finds services that passive tools miss entirely: internal subdomains created yesterday, staging environments, services with no TLS certificates. mschwager rewrote it cleanly in Python 3 around 2017–2019.",
+  "links": {
+    "GitHub": "https://github.com/mschwager/fierce"
+  }
+}

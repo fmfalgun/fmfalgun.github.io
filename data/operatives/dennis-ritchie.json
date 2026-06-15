@@ -1,0 +1,11 @@
+{
+  "name": "Dennis Ritchie",
+  "handle": "dmr",
+  "domain": "Unix / Systems Foundations",
+  "era": "1941–2011",
+  "org": "Bell Labs (AT&T)",
+  "why_notable": "Co-created Unix with Ken Thompson. Created the C programming language. Nearly every security tool in existence is written in C, Go, Python, or Rust — all of which trace their lineage directly to C and Unix. He died October 2011, two days after Steve Jobs, and received a fraction of the public attention despite having arguably more impact on how computing actually works. The kernel you run Kali on, the socket primitives your tools call — his design decisions, still.",
+  "links": {
+    "dmr memorial": "https://www.bell-labs.com/usr/dmr/www/"
+  }
+}

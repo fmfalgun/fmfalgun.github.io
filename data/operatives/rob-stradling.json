@@ -1,0 +1,12 @@
+{
+  "name": "Rob Stradling",
+  "handle": null,
+  "domain": "Certificate Transparency & PKI",
+  "era": "2015–present",
+  "org": "Sectigo (formerly Comodo CA)",
+  "why_notable": "Built crt.sh — the PostgreSQL-backed search frontend over Certificate Transparency logs that turned CT data into a free, queryable, human-usable tool. Created it in 2015 when CT became mandatory for Chrome. Sectigo hosts it as a public service. For reconnaissance purposes, crt.sh is how you extract subdomains from CT logs without running your own log crawler — it's the tool that made CT data operationally accessible for the security community.",
+  "links": {
+    "GitHub": "https://github.com/robstradling",
+    "crt.sh": "https://crt.sh"
+  }
+}

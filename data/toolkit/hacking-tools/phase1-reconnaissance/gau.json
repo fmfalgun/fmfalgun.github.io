@@ -1,0 +1,14 @@
+{
+  "name": "gau",
+  "purpose": "Historical URL fetcher — aggregates URLs from Wayback Machine, Common Crawl, AlienVault OTX, and URLScan.io",
+  "author": "Corben Leo (lc)",
+  "org": "Independent",
+  "year": "2019",
+  "language": "Go",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Corben Leo identified the gap in tomnomnom's waybackurls: the Wayback Machine has broad crawl coverage but misses URLs that only appear in threat intelligence feeds or security scanner logs. gau (GetAllURLs) queries four sources in parallel — Wayback Machine CDX API, Common Crawl, AlienVault OTX (URLs from malware/phishing samples), and URLScan.io (security-researcher-submitted pages) — then deduplicates. AlienVault OTX's inclusion is uniquely valuable: it captures attack-targeted pages that normal crawlers never visit. Historical URLs surface old admin panels, backup files, old API versions, and parameter names that reveal injection candidates — all without sending a single packet to the target.",
+  "links": {
+    "GitHub": "https://github.com/lc/gau"
+  }
+}

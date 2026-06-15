@@ -1,0 +1,11 @@
+{
+  "name": "Elizabeth \"Jake\" Feinler",
+  "handle": null,
+  "domain": "DNS & Internet Infrastructure",
+  "era": "1972–1989",
+  "org": "Stanford Research Institute (SRI) — Network Information Center (SRI-NIC)",
+  "why_notable": "Ran the ARPANET Network Information Center and maintained HOSTS.TXT — the flat file that mapped every hostname to an IP on ARPANET before DNS existed. Also ran the original WHOIS directory service, which people literally called into by telephone. When DNS replaced HOSTS.TXT in 1983, her infrastructure was exactly what it replaced. The person who kept the proto-internet from falling apart for seventeen years.",
+  "links": {
+    "Internet Hall of Fame": "https://www.internethalloffame.org/inductees/elizabeth-feinler"
+  }
+}

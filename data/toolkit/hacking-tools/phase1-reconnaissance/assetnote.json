@@ -1,0 +1,15 @@
+{
+  "name": "Assetnote Wordlists",
+  "purpose": "Auto-generated technology-specific wordlists mined monthly from Common Crawl data, grouped by detected framework",
+  "author": "Shubham Shah (shubs / infosec_au)",
+  "org": "Assetnote (acquired by Netlify, 2022)",
+  "year": "2019",
+  "language": "Data pipeline (Go/Python); outputs text wordlists",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Australian bug bounty hunter Shubham Shah identified the gap in SecLists: generic web-path lists don't know what framework the target runs. Laravel's /horizon debug panel or Spring Boot's /actuator/heapdump don't appear in generic lists — you need framework-specific wordlists. Shah built a pipeline that processes monthly Common Crawl dumps (petabyte-scale public web crawls by Gil Elbaz's nonprofit), detects technology stacks via Wappalyzer signatures, groups URLs by detected framework, and frequency-ranks paths within each group. The result: /actuator appears at rank 5 in a Spring Boot list versus rank 50,000 in a generic list. Free wordlists at wordlists.assetnote.io are auto-regenerated monthly. The company was acquired by Netlify in 2022; free access was unaffected.",
+  "links": {
+    "Wordlists": "https://wordlists.assetnote.io",
+    "GitHub": "https://github.com/assetnote/wordlists"
+  }
+}

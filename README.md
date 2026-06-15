@@ -70,4 +70,22 @@ portfolio/
 
 ---
 
+---
+
+## OPERATIVES Page (`operatives.html`)
+
+People who built the tools, protocols, and techniques behind security research. Cards loaded dynamically from `data/operatives/` — one JSON file per person, manifest-driven.
+
+→ See [`data/operatives/README.md`](data/operatives/README.md) for file format, manifest structure, and how to add a new person.
+
+---
+
+## TOOLKIT Page (`toolkit.html`)
+
+Tools studied in depth during web-vapt training, organised by category and phase. Same manifest-driven pattern as OPERATIVES.
+
+→ See [`data/toolkit/README.md`](data/toolkit/README.md) for file format, directory structure, phase assignments, and how to add a new tool.
+
+---
+
 *Built for purpose. Not for decoration.*

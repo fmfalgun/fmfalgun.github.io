@@ -1,0 +1,12 @@
+{
+  "name": "Ken Harrenstien",
+  "handle": null,
+  "domain": "DNS & Internet Infrastructure",
+  "era": "Early 1980s",
+  "org": "Stanford Research Institute (SRI-NIC)",
+  "why_notable": "Co-authored RFC 812 (1982) — the first formal specification for the NICNAME/WHOIS protocol. Before that RFC, WHOIS was an informal service Feinler's team ran; Harrenstien turned it into a standard internet protocol. The WHOIS queries that underpin every domain registration lookup today are descendants of that 1982 document.",
+  "links": {
+    "RFC 812": "https://www.rfc-editor.org/rfc/rfc812",
+    "RFC 954": "https://www.rfc-editor.org/rfc/rfc954"
+  }
+}

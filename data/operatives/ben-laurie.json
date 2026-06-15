@@ -1,0 +1,11 @@
+{
+  "name": "Ben Laurie",
+  "handle": null,
+  "domain": "Certificate Transparency & PKI",
+  "era": "1995–present",
+  "org": "Google (security engineering); Apache Software Foundation (co-founder)",
+  "why_notable": "Co-designed Certificate Transparency (RFC 6962, 2013) — the system that made every issued TLS certificate publicly auditable via cryptographic append-only logs. This is the foundational change that made crt.sh and CT-based subdomain enumeration possible. Before CT, a CA could issue rogue certificates silently; after CT, any misissued cert is publicly visible within seconds. Also co-founded the Apache HTTP Server project in 1995 and was a significant OpenSSL contributor.",
+  "links": {
+    "RFC 6962": "https://www.rfc-editor.org/rfc/rfc6962"
+  }
+}

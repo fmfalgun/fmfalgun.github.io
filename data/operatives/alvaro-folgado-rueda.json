@@ -1,0 +1,9 @@
+{
+  "name": "Alvaro Folgado Rueda",
+  "handle": "rfog",
+  "domain": "Classic Tools",
+  "era": "~2004–present",
+  "org": "Independent / Edge-Security adjacent",
+  "why_notable": "Created dirb — one of the first dedicated web directory brute-force tools. The bundled wordlists (common.txt, big.txt, small.txt) that shipped with dirb were the community standard for web path enumeration before SecLists centralized everything. big.txt still appears as a default or reference in tools and courses today. Dirb's impact on web application pentesting far exceeded its creator's public visibility — a pattern common in security tooling.",
+  "links": {}
+}

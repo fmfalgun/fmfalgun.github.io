@@ -1,0 +1,11 @@
+{
+  "name": "mschwager",
+  "handle": "mschwager",
+  "domain": "Reconnaissance & OSINT Tools",
+  "era": "~2017–present",
+  "org": "Open-source contributor",
+  "why_notable": "Wrote the Python 3 rewrite of fierce — the version available via pip install fierce and actively maintained today. RSnake's original fierce.pl was a Perl script that went unmaintained; mschwager took the core logic (AXFR zone transfer attempt, wildcard detection, DNS brute-force, traverse/wide scan) and produced a clean, modern Python implementation. Made a decade-old DNS recon tool accessible to the current generation of pentesters.",
+  "links": {
+    "GitHub": "https://github.com/mschwager/fierce"
+  }
+}

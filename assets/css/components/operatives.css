@@ -1,0 +1,220 @@
+/* =============================================
+   OPERATIVES PAGE
+   ============================================= */
+
+/* Page hero */
+.operatives-hero {
+  padding: 10rem 0 5rem;
+  background: var(--black);
+  border-bottom: 1px solid var(--border);
+}
+.operatives-hero .section-label {
+  margin-bottom: 1.2rem;
+}
+.operatives-hero-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: .04em;
+  margin-bottom: 1.2rem;
+}
+.operatives-hero-intro {
+  font-size: .9rem;
+  color: rgba(232,228,217,.6);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* Count badge */
+.operatives-count {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .15em;
+  color: var(--amber);
+  border: 1px solid rgba(212,136,42,.3);
+  padding: .3rem .8rem;
+  border-radius: 2px;
+}
+
+/* Main section */
+.operatives-section {
+  padding: 5rem 0 7rem;
+  background: var(--black);
+}
+
+/* Domain group */
+.domain-group {
+  margin-bottom: 4rem;
+}
+.domain-group:last-child {
+  margin-bottom: 0;
+}
+
+.domain-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid var(--border);
+}
+.domain-header-label {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .18em;
+  color: var(--khaki);
+}
+.domain-header-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: .05em;
+}
+.domain-header-count {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  color: var(--dim);
+  margin-left: auto;
+}
+
+/* Cards grid */
+.operatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.4rem;
+}
+
+/* Individual operative card */
+.operative-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  padding: 1.5rem;
+  transition: border-left-color .2s, background .2s, border-color .2s;
+  position: relative;
+}
+.operative-card:hover {
+  background: #161A12;
+  border-left-color: var(--cream);
+  border-color: #3A4038;
+}
+
+/* Card top row: name + era */
+.operative-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: .8rem;
+  gap: .8rem;
+}
+.operative-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: .03em;
+  line-height: 1.3;
+}
+.operative-handle {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--amber);
+  margin-top: .15rem;
+  letter-spacing: .05em;
+}
+.operative-era {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: .15rem;
+}
+
+/* Org line */
+.operative-org {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .06em;
+  color: var(--khaki);
+  margin-bottom: 1rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+/* Why notable body */
+.operative-why {
+  font-size: .82rem;
+  color: rgba(232,228,217,.65);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* Links row */
+.operative-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: auto;
+}
+.operative-link {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--amber);
+  text-decoration: none;
+  border: 1px solid rgba(212,136,42,.3);
+  padding: .2rem .5rem;
+  border-radius: 2px;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.operative-link:hover {
+  background: rgba(212,136,42,.12);
+  border-color: var(--amber);
+}
+
+/* Loading / error states */
+.operatives-loading {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--khaki);
+  letter-spacing: .12em;
+  padding: 4rem 0;
+  text-align: center;
+}
+.operatives-loading::before {
+  content: '// ';
+  color: var(--amber);
+}
+.operatives-error {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #CA6F6F;
+  letter-spacing: .08em;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .operatives-hero {
+    padding: 8rem 0 4rem;
+  }
+  .operatives-grid {
+    grid-template-columns: 1fr;
+  }
+  .operative-card-header {
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .operative-era {
+    align-self: flex-start;
+  }
+}

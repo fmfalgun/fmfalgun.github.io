@@ -1,0 +1,12 @@
+{
+  "name": "Jason Haddix",
+  "handle": "jhaddix",
+  "domain": "Wordlists & Data Sources",
+  "era": "~2012–present",
+  "org": "Bugcrowd (Head of Research, ~2015–2018); Ubisoft (CISO); BugsToAdmins",
+  "why_notable": "Contributed the subdomains-top1million DNS wordlist series to SecLists (2015) — the first statistically-compiled DNS wordlist, built from CT log mining and passive DNS data rather than manual curation. That methodology change (data-driven vs. hand-curated) made it dramatically more effective. Defined the modern bug bounty methodology with 'The Bug Hunter's Methodology' talks at DEF CON and Black Hat, which are still the primary reference for structured recon. Shaped how an entire generation approaches attack surface discovery.",
+  "links": {
+    "GitHub": "https://github.com/jhaddix",
+    "Twitter/X": "https://twitter.com/Jhaddix"
+  }
+}

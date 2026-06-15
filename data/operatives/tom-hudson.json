@@ -1,0 +1,12 @@
+{
+  "name": "Tom Hudson",
+  "handle": "tomnomnom",
+  "domain": "Pentest Tools & Bug Bounty Research",
+  "era": "2015–present",
+  "org": "Detectify (security researcher)",
+  "why_notable": "Author of httprobe and approximately 50 other small composable Go recon tools: waybackurls, assetfinder, gf, qsreplace, meg, concurl, fff. Each tool does exactly one thing, reads stdin, writes stdout — deliberately designed to chain via Unix pipes. His philosophy was a counter-movement against Swiss-Army-knife security tools. The tools became the backbone of modern bug bounty recon pipelines, embedded in published methodologies (Jason Haddix's Bug Hunter's Methodology) and automated frameworks (Axiom, ReconFTW). The Unix pipe philosophy applied to security tooling.",
+  "links": {
+    "GitHub": "https://github.com/tomnomnom",
+    "Twitter/X": "https://twitter.com/tomnomnom"
+  }
+}

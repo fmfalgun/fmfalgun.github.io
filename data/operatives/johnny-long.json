@@ -1,0 +1,11 @@
+{
+  "name": "Johnny Long",
+  "handle": "j0hnny",
+  "domain": "Search Engine Hacking & Web Archives",
+  "era": "2004–present",
+  "org": "Solutionary (acquired by NTT); Hackers for Charity (founder)",
+  "why_notable": "Created Google Hacking as a formalized technique (2004) and built the Google Hacking Database (GHDB) — a community-maintained catalog of search operator queries that expose sensitive indexed content: open directories, config files, login panels, credentials in URLs, exposed cameras, router admin pages. Published Google Hacking for Penetration Testers, the foundational text. The GHDB migrated to exploit-db.com and now contains 6500+ entries. Later founded Hackers for Charity, applying security skills to humanitarian technology projects in Uganda.",
+  "links": {
+    "GHDB": "https://www.exploit-db.com/google-hacking-database"
+  }
+}

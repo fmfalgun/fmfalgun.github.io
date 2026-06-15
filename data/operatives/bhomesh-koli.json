@@ -1,0 +1,13 @@
+{
+  "name": "Bhomesh Koli",
+  "handle": "Ice3man543",
+  "domain": "Subdomain Enumeration & ProjectDiscovery",
+  "era": "~2018–present",
+  "org": "ProjectDiscovery (co-founder)",
+  "why_notable": "Original author of subfinder (2018–2019) — the Go-based passive subdomain enumeration tool that became the community standard. Subfinder's design: multiple passive source APIs queried concurrently, results deduplicated, output piped to the next tool. Co-founded ProjectDiscovery, which grew from a side project into a full open-source security tooling company (subfinder, nuclei, httpx, naabu, katana) that raised $25M+ in funding. The toolchain he helped build is now embedded in every serious recon pipeline.",
+  "links": {
+    "GitHub": "https://github.com/Ice3man543",
+    "Twitter/X": "https://twitter.com/Ice3man543",
+    "ProjectDiscovery": "https://projectdiscovery.io"
+  }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Toolkit | Falgun Marothia</title>
+  <meta name="description" content="Security and Unix tools studied in depth by Falgun Marothia — organized by phase, with origin stories, key people, and technical context." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://fmfalgun.github.io/toolkit.html" />
+  <meta property="og:title"       content="Toolkit | Falgun Marothia" />
+  <meta property="og:description" content="Security and Unix tools studied in depth — organized by reconnaissance and scanning phases." />
+  <meta property="og:image"       content="https://fmfalgun.github.io/assets/img/og-preview.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Toolkit | Falgun Marothia" />
+  <meta name="twitter:description" content="Security and Unix tools studied in depth — recon, scanning, and Unix essentials." />
+  <meta name="twitter:image"       content="https://fmfalgun.github.io/assets/img/og-preview.png" />
+
+  <link rel="canonical" href="https://fmfalgun.github.io/toolkit.html" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJSQRYSHHK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QJSQRYSHHK');
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/base/variables.css" />
+  <link rel="stylesheet" href="assets/css/base/reset.css" />
+  <link rel="stylesheet" href="assets/css/components/nav.css" />
+  <link rel="stylesheet" href="assets/css/components/cards.css" />
+  <link rel="stylesheet" href="assets/css/components/contact.css" />
+  <link rel="stylesheet" href="assets/css/components/toolkit.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <div class="nav-logo">FM<span class="accent">//</span>SEC</div>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#projects">PROJECTS</a></li>
+        <li><a href="operatives.html">OPERATIVES</a></li>
+        <li><a href="toolkit.html" class="nav-active">TOOLKIT</a></li>
+        <li><a href="falgun_resume.pdf" class="nav-cta" target="_blank" rel="noopener noreferrer">RESUME ↗</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="toolkit-hero">
+      <div class="container">
+        <div class="section-label">[// TOOLKIT]</div>
+        <h1 class="section-heading">Tools of the Trade</h1>
+        <p class="toolkit-intro">
+          Security and Unix tools studied in depth — not just used, but understood.
+          Each entry covers who built it, why, what problem it solved, and what makes it
+          architecturally significant. Organized by phase and category.
+        </p>
+        <div class="toolkit-stats" id="toolkit-stats" aria-label="Toolkit statistics">
+          <!-- populated by toolkitController.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLKIT CONTENT — populated by toolkitController.js -->
+    <div id="toolkit-root" role="region" aria-label="Toolkit tools">
+      <!-- JS renders category sections here -->
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">FM<span class="accent">//</span>SEC</span>
+      <span class="footer-copy">© 2026 Falgun Marothia · fmfalgun.github.io</span>
+      <span class="footer-sig">BUILT WITH PURPOSE</span>
+    </div>
+  </footer>
+
+  <!-- Nav controller (hamburger menu) -->
+  <script type="module" src="src/controllers/navController.js"></script>
+  <!-- Toolkit data loader -->
+  <script type="module" src="src/controllers/toolkitController.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "Shubham Shah",
+  "handle": "shubs",
+  "domain": "Wordlists & Data Sources",
+  "era": "~2015–present",
+  "org": "Assetnote (co-founder, acquired by Netlify 2022); previously Atlassian",
+  "why_notable": "Built the Assetnote wordlist pipeline — an automated system that regenerates technology-specific wordlists monthly from Common Crawl data. The key insight: rather than a static list curated once, generate fresh lists from current web crawl data to capture new endpoints, frameworks, and paths as they emerge. Co-founded Assetnote (ASM platform + free wordlists), acquired by Netlify in 2022. Also known for SSRF research, host header attack techniques, and subdomain takeover methodology.",
+  "links": {
+    "Assetnote resources": "https://wordlists.assetnote.io",
+    "Twitter/X": "https://twitter.com/infosec_au"
+  }
+}

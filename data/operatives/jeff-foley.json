@@ -1,0 +1,13 @@
+{
+  "name": "Jeff Foley",
+  "handle": "caffix",
+  "domain": "Pentest Tools & Bug Bounty Research",
+  "era": "2017–present",
+  "org": "OWASP (lead of Amass project); SpiderSilk",
+  "why_notable": "Created OWASP Amass — the most comprehensive open-source attack surface mapping tool available. His core insight was treating subdomain enumeration as a graph problem (nodes: FQDNs, IPs, ASNs; edges: relationships) rather than a flat list problem. In v5, introduced the Open Asset Model (OAM), an open standard for representing internet asset relationships, and split Amass into an engine and client architecture that persists asset graphs across runs. Amass is an official OWASP project and the canonical tool for deep, structured attack surface discovery.",
+  "links": {
+    "GitHub": "https://github.com/caffix",
+    "Twitter/X": "https://twitter.com/jeff_foley",
+    "OWASP Amass": "https://github.com/owasp-amass/amass"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Paul Vixie",
+  "handle": null,
+  "domain": "DNS & Internet Infrastructure",
+  "era": "Late 1980s–present",
+  "org": "UC Berkeley → DEC → ISC (Internet Systems Consortium, co-founder); Farsight Security (founder)",
+  "why_notable": "Took over BIND maintenance from Berkeley and performed the first major architectural rewrite (BIND 4 → BIND 8). Founded ISC in 1994 as a nonprofit to maintain BIND as a public good. BIND 9 (2000) was a complete rewrite under his direction. Also the primary architect of DNSBL — DNS-based blackhole lists for spam filtering. Later founded Farsight Security, building passive DNS intelligence infrastructure. Kept the internet's naming system running for three decades.",
+  "links": {
+    "Twitter/X": "https://twitter.com/paulvixie",
+    "ISC": "https://www.isc.org",
+    "Farsight Security": "https://www.farsightsecurity.com"
+  }
+}

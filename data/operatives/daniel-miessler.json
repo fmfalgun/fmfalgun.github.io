@@ -1,0 +1,14 @@
+{
+  "name": "Daniel Miessler",
+  "handle": null,
+  "domain": "Wordlists & Data Sources",
+  "era": "~2005–present",
+  "org": "HP Enterprise (previously); independent researcher",
+  "why_notable": "Created SecLists (2012) — the community-standard wordlist repository that became the canonical reference for pentest tooling. Before SecLists, wordlists were scattered across tools, distros, and personal pastebin dumps. SecLists centralized everything: passwords, usernames, fuzzing payloads, web paths, subdomains, discovery lists. Now at 58,000+ GitHub stars and referenced by virtually every pentest tool that ships with wordlists. Also writes the Unsupervised Learning newsletter on security and technology.",
+  "links": {
+    "GitHub": "https://github.com/danielmiessler",
+    "SecLists": "https://github.com/danielmiessler/SecLists",
+    "Personal site": "https://danielmiessler.com",
+    "Twitter/X": "https://twitter.com/DanielMiessler"
+  }
+}

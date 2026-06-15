@@ -1,0 +1,15 @@
+{
+  "name": "nmap",
+  "purpose": "Network mapper — port scanning, service/version detection, OS fingerprinting, and scriptable network security auditing",
+  "author": "Gordon Lyon (Fyodor)",
+  "org": "Insecure.org",
+  "year": "1997",
+  "language": "C (core); Lua (NSE scripts)",
+  "phase": "Phase 2 — Scanning & Enumeration",
+  "category": "Hacking Tools",
+  "why_notable": "Gordon Lyon published nmap in Phrack #51 (September 1997) — the definitive underground hacker magazine — introducing techniques like SYN scanning, FIN/NULL/Xmas scans, decoy scanning, and fragmented packet scanning that were either new or previously undocumented publicly. Before nmap, scanning meant typing telnet commands one port at a time. Version 2.x (late 1990s) added OS fingerprinting by observing how TCP/IP stacks deviate from RFC 793 in unique ways; -sV (2001) added service/version detection turning nmap from a port scanner into a network intelligence tool; NSE (2006) added a Lua scripting engine with ~600 scripts ranging from banner grabs to CVE exploitation. Maintained continuously for 25+ years, it ships by default in Kali Linux, Parrot OS, and BlackArch. Its appearance in The Matrix Reloaded (2003) with a real nmap 2.54BETA7 command is one of the most technically accurate hacking sequences in mainstream film.",
+  "links": {
+    "nmap.org": "https://nmap.org",
+    "GitHub": "https://github.com/nmap/nmap"
+  }
+}

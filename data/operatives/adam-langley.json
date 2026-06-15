@@ -1,0 +1,11 @@
+{
+  "name": "Adam Langley",
+  "handle": null,
+  "domain": "Certificate Transparency & PKI",
+  "era": "2000s–present",
+  "org": "Google (BoringSSL, Chrome TLS)",
+  "why_notable": "One of the world's foremost TLS engineers. Co-designed Certificate Transparency alongside Ben Laurie. Primary author of BoringSSL — Google's OpenSSL fork used in Chrome and Android, which means his code handles TLS for billions of connections daily. Designed ChaCha20-Poly1305 and helped integrate it into TLS 1.3. His blog at imperialviolet.org is a primary source for understanding the internals of modern TLS.",
+  "links": {
+    "Blog": "https://www.imperialviolet.org"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "SSH / SFTP",
+  "purpose": "Encrypted remote shell access (SSH) and file transfer (SFTP) over a single authenticated TCP connection",
+  "author": "Tatu Ylonen (SSH); Theo de Raadt (OpenSSH fork)",
+  "org": "SSH Communications Security (origin); OpenBSD Project (OpenSSH)",
+  "year": "1995",
+  "language": "C",
+  "phase": null,
+  "category": "Unix Tools",
+  "why_notable": "Tatu Ylonen at Helsinki University of Technology invented SSH in July 1995 after a password-sniffing attack compromised thousands of credentials on the university network via cleartext telnet and rlogin. He published it as free software and it spread to 50+ countries within months, replacing the entire suite of cleartext protocols (telnet, rsh, rlogin, rcp, FTP). When Ylonen commercialized it, Theo de Raadt's OpenBSD team forked the last free version in 1999 to create OpenSSH — now the dominant implementation, shipping in virtually every Linux, macOS, and BSD system. SFTP (SSH File Transfer Protocol) is not FTP over SSH but a separate binary protocol running as an SSH subsystem, standardized in 2006 and the correct replacement for deprecated SCP (OpenSSH 9.0, 2022). Studied in depth: port forwarding, ProxyJump, MaxStartups/MaxSessions configuration, nftables ct count connection limiting, and sshd PAM integration.",
+  "links": {
+    "OpenSSH": "https://www.openssh.com"
+  }
+}

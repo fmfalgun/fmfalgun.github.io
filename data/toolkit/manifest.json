@@ -1,0 +1,17 @@
+{
+  "categories": [
+    {
+      "name": "Hacking Tools",
+      "type": "phases",
+      "phases": [
+        { "name": "Phase 1 — Reconnaissance", "manifest": "data/toolkit/hacking-tools/phase1-reconnaissance/manifest.json" },
+        { "name": "Phase 2 — Scanning & Enumeration", "manifest": "data/toolkit/hacking-tools/phase2-scanning/manifest.json" }
+      ]
+    },
+    {
+      "name": "Unix Tools",
+      "type": "flat",
+      "manifest": "data/toolkit/unix-tools/manifest.json"
+    }
+  ]
+}

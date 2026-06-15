@@ -1,0 +1,9 @@
+{
+  "name": "Kevin Dunlap",
+  "handle": null,
+  "domain": "DNS & Internet Infrastructure",
+  "era": "1984",
+  "org": "UC Berkeley (CSRG — Computer Systems Research Group)",
+  "why_notable": "Lead author of the original BIND (Berkeley Internet Name Domain) — the first DNS server implementation. It started as a class project and became the reference implementation deployed across most of the internet. BIND still powers a significant portion of DNS infrastructure today. The software that turned Mockapetris's spec into operational reality.",
+  "links": {}
+}

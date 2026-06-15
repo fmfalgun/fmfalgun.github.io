@@ -1,0 +1,14 @@
+{
+  "name": "waybackurls",
+  "purpose": "Passive historical URL discovery via the Internet Archive Wayback Machine CDX API",
+  "author": "Tom Hudson (tomnomnom)",
+  "org": "Detectify",
+  "year": "2018",
+  "language": "Go",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "waybackurls wraps the Internet Archive's CDX API — the query interface that returns every URL the Archive has ever crawled for a domain. The Internet Archive was founded by Brewster Kahle in 1996 with the goal of preserving the web; as a side effect, it became the most comprehensive source of historical URL data available to security researchers. Even if a page is deleted or moved, its URL persists in the Archive's crawl records. These historical URLs reveal deleted admin panels, backup files with sensitive extensions, removed API versions, and old parameter names — all passively, without touching the target. Hudson's tool embodies the Unix composable philosophy: reads a domain, writes one URL per line, composes cleanly with grep, sort, and arjun.",
+  "links": {
+    "GitHub": "https://github.com/tomnomnom/waybackurls"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Ken Thompson",
+  "handle": null,
+  "domain": "Unix / Systems Foundations",
+  "era": "1969–present",
+  "org": "Bell Labs (AT&T); Google",
+  "why_notable": "Co-created Unix (1969) with Dennis Ritchie at Bell Labs. Wrote wc as part of Unix v1 (1971). Co-invented the B language (precursor to C) and co-designed C. Created the Go programming language at Google (2007). Turing Award winner (1983). The OS lineage and language lineage behind virtually every security tool — Kali Linux, every Go recon tool, every C-based exploit — traces back to his work. One of the most consequential engineers in computing history.",
+  "links": {
+    "Turing Award citation": "https://amturing.acm.org/award_winners/thompson_4588371.cfm"
+  }
+}

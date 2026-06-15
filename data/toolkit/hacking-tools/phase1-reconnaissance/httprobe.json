@@ -1,0 +1,14 @@
+{
+  "name": "httprobe",
+  "purpose": "HTTP/HTTPS liveness filter — takes a subdomain list from stdin, outputs only live URLs",
+  "author": "Tom Hudson (tomnomnom)",
+  "org": "Detectify",
+  "year": "2018",
+  "language": "Go",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Tom Hudson at Detectify (Stockholm) built httprobe as the phase gate between DNS enumeration and web scanning — the tool that answers 'which of these subdomains actually serve HTTP traffic?' following a Unix composable philosophy where every tool reads from stdin and writes to stdout. Go goroutines let httprobe probe 20 concurrent hosts simultaneously across both HTTP and HTTPS, printing nothing for dead hosts and only live URLs for responsive ones. Its silent-failure design means wc -l on the output gives the exact live count, and the output feeds the next tool without filtering. It appears in Jason Haddix's Bug Hunter's Methodology and ProjectDiscovery's recommended pipeline.",
+  "links": {
+    "GitHub": "https://github.com/tomnomnom/httprobe"
+  }
+}

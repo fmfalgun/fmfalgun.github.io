@@ -1,0 +1,15 @@
+{
+  "name": "amass",
+  "purpose": "Attack surface mapping via a graph model — correlates subdomains, IPs, ASNs, and organizational relationships",
+  "author": "Jeff Foley (caffix)",
+  "org": "OWASP",
+  "year": "2017",
+  "language": "Go",
+  "phase": "Phase 1 — Reconnaissance",
+  "category": "Hacking Tools",
+  "why_notable": "Jeff Foley's core insight when releasing amass in Go in 2017 was that subdomains aren't isolated findings — they're nodes in a relationship network. While every prior tool produced flat lists, amass modeled assets as a typed graph: a domain resolves to an IP, that IP is in an ASN, that ASN is registered to an organization with other ASNs and IPs. This enabled a qualitatively different question: not 'what subdomains does example.com have?' but 'what is the full internet attack surface of the company that owns example.com?' Adopted by OWASP and included in their Testing Guide. The v5 rewrite (2023–24) introduced the Open Asset Model (OAM) — a formal typed-graph standard for internet assets, running as an engine+client architecture.",
+  "links": {
+    "GitHub": "https://github.com/owasp-amass/amass",
+    "OWASP Project": "https://owasp.org/www-project-amass/"
+  }
+}

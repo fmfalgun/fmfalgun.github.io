@@ -1,0 +1,12 @@
+{
+  "name": "Sandeep Singh",
+  "handle": "pussycat0x",
+  "domain": "Subdomain Enumeration & ProjectDiscovery",
+  "era": "~2018–present",
+  "org": "ProjectDiscovery (co-founder)",
+  "why_notable": "Co-founded ProjectDiscovery with Bhomesh Koli. Core member of the team behind the ProjectDiscovery tool ecosystem — the set of composable Go tools (subfinder, nuclei, httpx, naabu, katana, dnsx) that collectively redefined open-source security automation. His handle pussycat0x appears across the ProjectDiscovery GitHub org as a core contributor to tools used by hundreds of thousands of security professionals.",
+  "links": {
+    "GitHub": "https://github.com/pussycat0x",
+    "ProjectDiscovery": "https://projectdiscovery.io"
+  }
+}

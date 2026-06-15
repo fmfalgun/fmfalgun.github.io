@@ -1,0 +1,13 @@
+{
+  "name": "Paul Mockapetris",
+  "handle": null,
+  "domain": "DNS & Internet Infrastructure",
+  "era": "1983–present",
+  "org": "USC Information Sciences Institute; Nominum (co-founder)",
+  "why_notable": "Invented DNS. Wrote RFC 882 and RFC 883 (1983), defining the Domain Name System — the hierarchical, distributed database that replaced HOSTS.TXT. His design decisions: delegation, caching with TTLs, record types, UDP port 53. That architecture is essentially unchanged 40+ years later. Every dig, every nslookup, every subdomain enumeration run is operating on his spec.",
+  "links": {
+    "Internet Hall of Fame": "https://www.internethalloffame.org/inductees/paul-mockapetris",
+    "RFC 1034": "https://www.rfc-editor.org/rfc/rfc1034",
+    "RFC 1035": "https://www.rfc-editor.org/rfc/rfc1035"
+  }
+}
