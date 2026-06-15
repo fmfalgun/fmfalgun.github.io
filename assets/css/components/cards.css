@@ -178,6 +178,95 @@
 }
 .project-link:hover { border-color: var(--amber); }
 
+/* PORT INTEL WIDGET — embedded in project card */
+.port-widget {
+  margin: 1rem 0 .8rem;
+  border-top: 1px solid var(--border);
+  padding-top: .9rem;
+}
+.port-widget-search { display: flex; gap: .5rem; }
+.port-widget-input {
+  flex: 1;
+  background: var(--black);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  padding: .4rem .7rem;
+  outline: none;
+  transition: border-color .2s;
+  min-width: 0;
+}
+.port-widget-input::placeholder { color: var(--dim); }
+.port-widget-input:focus { border-color: var(--amber); }
+.port-widget-btn {
+  background: none;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  padding: .4rem .9rem;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.port-widget-btn:hover   { background: var(--amber); color: var(--black); }
+.port-widget-btn:disabled { opacity: .5; cursor: default; }
+.port-widget-result {
+  margin-top: .7rem;
+  border: 1px solid var(--border);
+  background: var(--black);
+  padding: .65rem .85rem;
+  font-family: var(--font-mono);
+}
+.pw-header {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .35rem;
+  flex-wrap: wrap;
+}
+.pw-port    { font-size: .68rem; color: var(--dim); }
+.pw-portnum { color: var(--amber); }
+.pw-service { font-size: .7rem; color: var(--cream); letter-spacing: .04em; }
+.pw-risk {
+  margin-left: auto;
+  font-size: .56rem;
+  letter-spacing: .12em;
+  padding: .12rem .45rem;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.pw-risk--critical { border-color: #CC3333; color: #CC3333; background: rgba(204,51,51,.1); }
+.pw-risk--high     { border-color: var(--amber); color: var(--amber); background: rgba(212,136,42,.1); }
+.pw-risk--medium   { border-color: var(--khaki); color: var(--khaki); background: rgba(139,115,85,.1); }
+.pw-risk--low      { border-color: var(--dim); color: var(--dim); background: transparent; }
+.pw-stats { display: flex; gap: 1rem; font-size: .6rem; color: var(--dim); margin-bottom: .35rem; }
+.pw-kev   { color: #CC3333; }
+.pw-technique {
+  font-size: .58rem;
+  color: var(--dim);
+  margin-bottom: .5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pw-link {
+  display: inline-block;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212,136,42,.3);
+  padding-bottom: 1px;
+  transition: border-color .2s;
+}
+.pw-link:hover { border-color: var(--amber); }
+.pw-not-found { font-size: .63rem; color: var(--dim); display: flex; flex-direction: column; gap: .4rem; }
+.pw-error     { font-size: .63rem; color: #CC3333; }
+
 /* PUBLICATIONS */
 .pub-list { display: flex; flex-direction: column; gap: 1px; }
 .pub-item {

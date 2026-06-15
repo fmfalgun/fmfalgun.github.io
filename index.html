@@ -449,6 +449,36 @@
             <a href="https://github.com/fmfalgun/prepclash" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
           </article>
 
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Python</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">port-analyzer</h3>
+            <p class="project-desc">Port-level cybersecurity intelligence — CVEs ranked by CVSS, CISA KEV exploitation status, EPSS probability scores, MITRE ATT&CK technique mappings, pentest commands, and hardening notes. CLI + REST API + web UI.</p>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>NVD</span><span>CISA KEV</span><span>EPSS</span><span>ATT&CK</span>
+            </div>
+            <div class="port-widget">
+              <div class="port-widget-search">
+                <input
+                  type="text"
+                  id="portfolio-port-input"
+                  class="port-widget-input"
+                  placeholder="port — try 22, 443, 3306, 6379..."
+                  maxlength="5"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  spellcheck="false"
+                >
+                <button id="portfolio-port-btn" class="port-widget-btn">ANALYZE</button>
+              </div>
+              <div id="portfolio-port-result" class="port-widget-result" hidden></div>
+            </div>
+            <a href="https://fmfalgun.github.io/port-analyzer" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
+            <a href="https://github.com/fmfalgun/port-analyzer" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
+          </article>
+
         </div>
         <div class="repos-more">
           <a href="https://github.com/fmfalgun" target="_blank" rel="noopener noreferrer" class="repos-more-link">→ Explore all repositories on GitHub ↗</a>
@@ -535,6 +565,7 @@
   <script type="module" src="src/views/hero.js"></script>
   <script type="module" src="src/controllers/reconController.js"></script>
   <script type="module" src="src/controllers/homeOutlineController.js"></script>
+  <script src="src/controllers/portWidgetController.js"></script>
 
 </body>
 </html>
