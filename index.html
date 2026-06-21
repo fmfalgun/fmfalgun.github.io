@@ -437,7 +437,7 @@
             </div>
             <h3 class="project-title">whois-extracter</h3>
             <p class="project-desc">WHOIS record parser with domain hijack risk scoring — registrar tier, NS type, DNSSEC status, lock count, expiry window. SQLite 24h cache, structured JSON output, community Risk Board.</p>
-            <pre class="demo-snippet">$ python3 whois-extracter.py -d nmap.org
+            <pre class="demo-snippet" id="snippet-whois-extracter">$ python3 whois-extracter.py -d nmap.org
   risk_score : 8 / 100  [INFO]
   registrar  : Network Solutions (enterprise)
   ns_type    : self-hosted
@@ -454,7 +454,7 @@
             </div>
             <h3 class="project-title">harvester-importer</h3>
             <p class="project-desc">Import and normalise theHarvester OSINT JSON — deduplicates emails, splits hosts from IPs, tracks source attribution per finding. SQLite cache, --submit flow, community Intel Board sorted by email count.</p>
-            <pre class="demo-snippet">$ python3 harvester-importer.py -f results.json
+            <pre class="demo-snippet" id="snippet-harvester-importer">$ python3 harvester-importer.py -f results.json
   emails : 4  hosts : 11  IPs : 3
   sources: crtsh · hackertarget · certspotter
   fyodor@insecure.org
@@ -471,7 +471,7 @@
             </div>
             <h3 class="project-title">subfinder-recon</h3>
             <p class="project-desc">Passive subdomain enumeration via subfinder with per-subdomain source attribution, wildcard detection, and SQLite 24h cache. Zero pip deps. Community Subdomain Registry sorted by count.</p>
-            <pre class="demo-snippet">$ python3 subfinder-recon.py -d nmap.org
+            <pre class="demo-snippet" id="snippet-subfinder-recon">$ python3 subfinder-recon.py -d nmap.org
   subdomains : 18  wildcards : 0
   sources    : crtsh · hackertarget
                submd · thc
@@ -518,7 +518,7 @@
             </div>
             <h3 class="project-title">crtsh-recon</h3>
             <p class="project-desc">Certificate Transparency subdomain discovery via crt.sh API. Classifies every cert SAN as a direct subdomain, wildcard, or infrastructure leak. Offline-first SQLite cache with 24h TTL. Zero pip deps — pure Python stdlib.</p>
-            <pre class="demo-snippet">$ python3 crtsh-recon.py -d nmap.org
+            <pre class="demo-snippet" id="snippet-crtsh-recon">$ python3 crtsh-recon.py -d nmap.org
 [+] 52 certs · 17 unique names
     direct (10)   wildcard (2)   leak (5)
 ────────────────────────────────────────
@@ -621,6 +621,7 @@
   <script type="module" src="src/controllers/reconController.js"></script>
   <script type="module" src="src/controllers/homeOutlineController.js"></script>
   <script src="src/controllers/portWidgetController.js"></script>
+  <script src="src/controllers/repoSnippetController.js"></script>
 
 </body>
 </html>
