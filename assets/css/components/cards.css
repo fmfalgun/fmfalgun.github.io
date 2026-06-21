@@ -307,6 +307,21 @@
 }
 
 
+.demo-snippet {
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  color: var(--green);
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--green);
+  padding: .7rem .85rem;
+  margin: .85rem 0 .9rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
 .repos-more {
   margin-top: 2rem;
   text-align: center;
