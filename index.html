@@ -213,7 +213,8 @@
           <div class="skill-block">
             <div class="skill-block-header"><span class="skill-icon">◈</span> SECURITY RESEARCH</div>
             <ul class="skill-list">
-              <li>Vulnerability Assessment &amp; Penetration Testing (VAPT)</li>
+              <li>Web Application VAPT (7-phase)</li>
+              <li>Passive OSINT / Subdomain Reconnaissance</li>
               <li>Network Security / Internet Security</li>
               <li>Ethical Hacking</li>
               <li>Anomaly Detection / Continuous Monitoring</li>
@@ -248,18 +249,21 @@
             <div class="skill-block-header"><span class="skill-icon">◈</span> SYSTEMS &amp; TOOLS</div>
             <ul class="skill-list">
               <li>Kali Linux · Arch Linux · Ubuntu</li>
-              <li>Docker · Git · GitHub</li>
+              <li>Docker · Git · GitHub Actions / Pages</li>
               <li>Linux Server / OS Administration</li>
               <li>Scapy / tshark / Wireshark</li>
-              <li>Joplin</li>
+              <li>subfinder · theHarvester · crt.sh · whois</li>
+              <li>nmap · WhatWeb · curl</li>
             </ul>
           </div>
 
           <div class="skill-block">
             <div class="skill-block-header"><span class="skill-icon">◈</span> WEB &amp; FULL-STACK</div>
             <ul class="skill-list">
-              <li>HTML / HTML5 / CSS</li>
+              <li>HTML / CSS / JavaScript</li>
               <li>Bootstrap</li>
+              <li>SQLite · Caching Patterns</li>
+              <li>REST API Design · FastAPI</li>
               <li>Full-Stack Development</li>
               <li>Application Security</li>
             </ul>
@@ -273,45 +277,45 @@
     <section id="projects" class="section">
       <div class="container">
         <div class="section-label">[03 // OPERATIONS]</div>
-        <h2 class="section-heading">Research Projects</h2>
+        <h2 class="section-heading">Security Domains</h2>
         <div class="projects-list">
 
           <article class="project-card">
             <div class="project-meta">
-              <span class="project-protocol">BLE</span>
+              <span class="project-protocol">WIRELESS</span>
             </div>
-            <h3 class="project-title">BLE Protocol Security & IDS Research</h3>
+            <h3 class="project-title">Wireless Protocol Security</h3>
             <p class="project-desc">
-              Strong foundation in BLE protocol security — covering attack surface analysis, pcap dataset methodology across multiple attack categories, and ML-based IDS pipeline design with integer-labelled records for anomaly classification.
+              Deep knowledge of attack surface analysis, labeled pcap dataset methodology, and ML-based IDS pipeline design across three IoT wireless protocols — BLE (GATT/SMP attacks, BlueZ), Zigbee (IEEE 802.15.4 protocol-level inspection), and Wi-Fi (802.11 management frame attacks with XGBoost/Random Forest classifiers for anomaly detection).
             </p>
             <div class="project-tags">
-              <span>BLE SMP</span><span>Scapy</span><span>BlueZ</span><span>ML/IDS</span><span>Dataset Gen</span>
+              <span>BLE</span><span>Zigbee 802.15.4</span><span>Wi-Fi 802.11</span><span>ML/IDS</span><span>Dataset Gen</span><span>Scapy</span>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-meta">
-              <span class="project-protocol">ZIGBEE</span>
+              <span class="project-protocol">OSINT</span>
             </div>
-            <h3 class="project-title">Zigbee Protocol Security Analysis</h3>
+            <h3 class="project-title">Passive OSINT &amp; Reconnaissance</h3>
             <p class="project-desc">
-              Working knowledge of Zigbee protocol security analysis, including attack scenario design, protocol-level inspection, and multi-protocol dataset generation methodologies for IoT threat detection.
+              Hands-on capability across the full passive recon phase — Certificate Transparency (crt.sh API, SAN leak detection), DNS enumeration (subfinder, fierce, amass, theHarvester), WHOIS/RIR analysis, subdomain brute-forcing, and live host detection. Built a 12-tool open-source recon suite covering each technique with SQLite caching, CI pipelines, and community data boards.
             </p>
             <div class="project-tags">
-              <span>802.15.4</span><span>Protocol Analysis</span><span>Dataset Gen</span>
+              <span>CT Logs</span><span>DNS</span><span>WHOIS</span><span>subfinder</span><span>OSINT</span><span>Python</span>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-meta">
-              <span class="project-protocol">Wi-Fi</span>
+              <span class="project-protocol">VAPT</span>
             </div>
-            <h3 class="project-title">Wi-Fi Management Frame Security</h3>
+            <h3 class="project-title">Web Application Penetration Testing</h3>
             <p class="project-desc">
-              Deep understanding of Wi-Fi management frame attack patterns and labeled dataset methodology. Familiar with training XGBoost and Random Forest classifiers for wireless anomaly detection as part of a multi-protocol IDS pipeline.
+              Systematic study of all 7 VAPT phases — reconnaissance through remediation verification. Active scanning with nmap (SSLv3/POODLE/SWEET32 detection), WhatWeb fingerprinting, curl security header auditing. Identified critical findings: EOL PHP 5.4.16 + OpenSSL 1.0.2k, exposed cPanel/WHM panels, PHPSESSID without HttpOnly/Secure flags, and 9 missing security headers.
             </p>
             <div class="project-tags">
-              <span>802.11</span><span>XGBoost</span><span>Random Forest</span><span>ESP32</span><span>tshark</span>
+              <span>nmap</span><span>WhatWeb</span><span>curl</span><span>SSL/TLS</span><span>OWASP</span><span>Web VAPT</span>
             </div>
           </article>
 
@@ -429,24 +433,50 @@
           <article class="project-card">
             <div class="project-meta">
               <span class="project-protocol">Python</span>
-              <span class="project-status status-active">★ 4</span>
+              <span class="project-status status-active">ACTIVE</span>
             </div>
-            <h3 class="project-title">Solo_leveling</h3>
-            <p class="project-desc">Progress log while working and learning across cybersecurity, Linux, and programming.</p>
-            <div class="project-tags"><span>cybersecurity</span><span>linux</span><span>programming</span></div>
-            <a href="https://github.com/fmfalgun/Solo_leveling" target="_blank" rel="noopener noreferrer" class="project-link">→ View on GitHub ↗</a>
+            <h3 class="project-title">whois-extracter</h3>
+            <p class="project-desc">WHOIS record parser with domain hijack risk scoring — registrar tier, NS type, DNSSEC status, lock count, expiry window. SQLite 24h cache, structured JSON output, community Risk Board.</p>
+            <pre class="demo-snippet">$ python3 whois-extracter.py -d nmap.org
+  risk_score : 8 / 100  [INFO]
+  registrar  : Network Solutions (enterprise)
+  ns_type    : self-hosted
+  dnssec     : unsigned  [LOW +3]</pre>
+            <div class="project-tags"><span>Python</span><span>WHOIS</span><span>Risk Scoring</span><span>DNS</span><span>Recon</span></div>
+            <a href="https://fmfalgun.github.io/whois-extracter" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
+            <a href="https://github.com/fmfalgun/whois-extracter" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
           </article>
 
           <article class="project-card">
             <div class="project-meta">
-              <span class="project-protocol">JavaScript</span>
+              <span class="project-protocol">Python</span>
               <span class="project-status status-active">ACTIVE</span>
             </div>
-            <h3 class="project-title">PrepClash</h3>
-            <p class="project-desc">Competitive exam preparation game — a web-based platform built in JavaScript.</p>
-            <div class="project-tags"><span>JavaScript</span><span>Game</span><span>Web</span></div>
-            <a href="https://fmfalgun.github.io/prepclash" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
-            <a href="https://github.com/fmfalgun/prepclash" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
+            <h3 class="project-title">harvester-importer</h3>
+            <p class="project-desc">Import and normalise theHarvester OSINT JSON — deduplicates emails, splits hosts from IPs, tracks source attribution per finding. SQLite cache, --submit flow, community Intel Board sorted by email count.</p>
+            <pre class="demo-snippet">$ python3 harvester-importer.py -f results.json
+  emails : 4   hosts : 11   IPs : 3
+  sources: certspotter · crtsh · hackertarget
+  fyodor@insecure.org  nmap-dev@nmap.org</pre>
+            <div class="project-tags"><span>Python</span><span>theHarvester</span><span>OSINT</span><span>Email Recon</span><span>Recon</span></div>
+            <a href="https://fmfalgun.github.io/harvester-importer" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
+            <a href="https://github.com/fmfalgun/harvester-importer" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Python</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">subfinder-recon</h3>
+            <p class="project-desc">Passive subdomain enumeration via subfinder with per-subdomain source attribution, wildcard detection, and SQLite 24h cache. Zero pip deps. Community Subdomain Registry sorted by count.</p>
+            <pre class="demo-snippet">$ python3 subfinder-recon.py -d nmap.org
+  subdomains : 18   wildcards : 0
+  sources    : crtsh · hackertarget · submd · thc
+  scanme.nmap.org   [crtsh, hackertarget]</pre>
+            <div class="project-tags"><span>Python</span><span>subfinder</span><span>Subdomain</span><span>OSINT</span><span>Recon</span></div>
+            <a href="https://fmfalgun.github.io/subfinder-recon" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
+            <a href="https://github.com/fmfalgun/subfinder-recon" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
           </article>
 
           <article class="project-card">
@@ -477,6 +507,29 @@
             </div>
             <a href="https://fmfalgun.github.io/port-analyzer" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
             <a href="https://github.com/fmfalgun/port-analyzer" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-protocol">Python</span>
+              <span class="project-status status-active">ACTIVE</span>
+            </div>
+            <h3 class="project-title">crtsh-recon</h3>
+            <p class="project-desc">Certificate Transparency subdomain discovery via crt.sh API. Classifies every cert SAN as a direct subdomain, wildcard, or infrastructure leak. Offline-first SQLite cache with 24h TTL. Zero pip deps — pure Python stdlib.</p>
+            <pre class="demo-snippet">$ python3 crtsh-recon.py -d nmap.org
+[+] 52 certs · 17 unique names
+    direct (10)   wildcard (2)   leak (5)
+────────────────────────────────────────
+    scanme.nmap.org      [direct]
+    *.nmap.org           [wildcard]
+    seclists.org         [SAN leak → same server]
+    insecure.org         [SAN leak]
+    nmap.com             [SAN leak]</pre>
+            <div class="project-tags">
+              <span>Python</span><span>CT Logs</span><span>Subdomain</span><span>SAN Leaks</span><span>Recon</span>
+            </div>
+            <a href="https://fmfalgun.github.io/crtsh-recon" target="_blank" rel="noopener noreferrer" class="project-link">→ Live Site ↗</a>
+            <a href="https://github.com/fmfalgun/crtsh-recon" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-left:1rem;">→ GitHub ↗</a>
           </article>
 
         </div>
