@@ -63,6 +63,26 @@
     return lines.join('\n');
   }
 
+  function formatWhoisDeep(d) {
+    var ip    = d.ip_whois || {};
+    var cidr  = ip.cidr || {};
+    var asn   = ip.asn ? 'AS' + ip.asn : '—';
+    var org   = ip.org_name || '—';
+    if (org.length > 30) org = org.slice(0, 28) + '..';
+    var block = cidr.cidr_notation || '—';
+    var size  = cidr.size ? '  (' + cidr.size + ' IPs)' : '';
+    var hint  = ip.hosting_hint || '—';
+
+    return [
+      '$ python3 whois-deep.py -d nmap.org',
+      '  resolved   : ' + (d.resolved_ip || '—'),
+      '  rir        : ' + (ip.rir || '—') + '  /  ' + asn,
+      '  org        : ' + org,
+      '  netblock   : ' + block + size,
+      '  hosting    : ' + hint,
+    ].join('\n');
+  }
+
   function formatSubfinder(d) {
     var srcs = (d.sources   || []).slice(0, 3).join(' \xb7 ');
     var subs = (d.subdomains || []).slice(0, 2);
@@ -104,6 +124,11 @@
       id:     'snippet-subfinder-recon',
       url:    BASE + 'subfinder-recon/data/domains/nmap.org.json',
       format: formatSubfinder,
+    },
+    {
+      id:     'snippet-whois-deep',
+      url:    BASE + 'whois-deep/data/domains/nmap.org.json',
+      format: formatWhoisDeep,
     },
   ];
 
