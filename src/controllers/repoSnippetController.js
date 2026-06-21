@@ -83,6 +83,23 @@
     ].join('\n');
   }
 
+  function formatDigRecon(d) {
+    var rec   = d.records || {};
+    var a     = (rec.a || []);
+    var ns    = (rec.ns || []);
+    var spf   = d.spf   || {};
+    var dmarc = d.dmarc || {};
+
+    return [
+      '$ python3 dig-recon.py -d nmap.org',
+      '  A       : ' + (a[0] || '—') + (a.length > 1 ? '  (+' + (a.length - 1) + ')' : ''),
+      '  NS      : ' + (ns[0] || '—') + (ns.length > 1 ? '  (x' + ns.length + ')' : ''),
+      '  SPF     : ' + (spf.raw || 'not found') + '  [' + (spf.all || '—') + ']',
+      '  DMARC   : ' + (dmarc.policy ? 'p=' + dmarc.policy + '  pct=' + (dmarc.pct != null ? dmarc.pct : '—') : 'not found'),
+      '  spoofable: ' + (d.email_spoofable ? 'YES — ' + (d.spoofable_reason || '') : 'NO — fully protected'),
+    ].join('\n');
+  }
+
   function formatSubfinder(d) {
     var srcs = (d.sources   || []).slice(0, 3).join(' \xb7 ');
     var subs = (d.subdomains || []).slice(0, 2);
@@ -129,6 +146,11 @@
       id:     'snippet-whois-deep',
       url:    BASE + 'whois-deep/data/domains/nmap.org.json',
       format: formatWhoisDeep,
+    },
+    {
+      id:     'snippet-dig-recon',
+      url:    BASE + 'dig-recon/data/domains/nmap.org.json',
+      format: formatDigRecon,
     },
   ];
 
