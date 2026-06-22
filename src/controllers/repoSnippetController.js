@@ -117,6 +117,24 @@
     return lines.join('\n');
   }
 
+  function formatGobuster(d) {
+    var findings = d.findings || [];
+    var s2xx = findings.filter(function (f) { return f.status >= 200 && f.status < 300; });
+    var s3xx = findings.filter(function (f) { return f.status >= 300 && f.status < 400; });
+    var sample2 = s2xx.slice(0, 3).map(function (f) { return f.path.replace(/^\//, '') || '/'; }).join(', ');
+    var sample3 = s3xx.slice(0, 2).map(function (f) { return f.path.replace(/^\//, '') || '/'; }).join(', ');
+
+    return [
+      '$ python3 gobuster-recon.py -u ' + (d.url || 'https://nmap.org'),
+      '  found   : ' + (d.finding_count || 0) + ' paths',
+      '  2xx     : ' + s2xx.length + (sample2 ? '  (' + sample2 + ')' : ''),
+      '  3xx     : ' + s3xx.length + (sample3 ? '  (' + sample3 + ')' : ''),
+      '  admin   : ' + (d.has_admin ? 'YES ⚠' : 'NO') +
+        '   login: ' + (d.has_login ? 'YES ⚠' : 'NO') +
+        '   phpMyAdmin: ' + (d.has_phpmyadmin ? 'YES ⚠' : 'NO'),
+    ].join('\n');
+  }
+
   function formatWpscan(d) {
     var vulns   = d.vuln_count   || 0;
     var plugins = d.plugin_count || 0;
@@ -173,6 +191,11 @@
       id:     'snippet-wpscan-recon',
       url:    BASE + 'wpscan-recon/data/sites/wpscan.com.json',
       format: formatWpscan,
+    },
+    {
+      id:     'snippet-gobuster-recon',
+      url:    BASE + 'gobuster-recon/data/targets/nmap.org.json',
+      format: formatGobuster,
     },
   ];
 
