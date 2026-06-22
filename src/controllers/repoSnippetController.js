@@ -117,6 +117,23 @@
     return lines.join('\n');
   }
 
+  function formatWpscan(d) {
+    var vulns   = d.vuln_count   || 0;
+    var plugins = d.plugin_count || 0;
+    var users   = d.user_count   || 0;
+    var xmlrpc  = d.xmlrpc_active  ? 'EXPOSED (brute-force risk)' : 'not found';
+    var readme  = d.readme_exposed ? 'exposed' : 'hidden';
+    var ver     = (d.wp_version || '—') + '  (' + (d.wp_version_status || 'unknown') + ')';
+
+    return [
+      '$ python3 wpscan-recon.py -u ' + (d.url || 'https://target.com'),
+      '  WP      : ' + ver,
+      '  vulns   : ' + vulns + '  plugins: ' + plugins + '  users: ' + users,
+      '  xmlrpc  : ' + xmlrpc,
+      '  readme  : ' + readme,
+    ].join('\n');
+  }
+
   // ── project registry ─────────────────────────────────────────────────────────
 
   var BASE = 'https://fmfalgun.github.io/';
@@ -151,6 +168,11 @@
       id:     'snippet-dig-recon',
       url:    BASE + 'dig-recon/data/domains/nmap.org.json',
       format: formatDigRecon,
+    },
+    {
+      id:     'snippet-wpscan-recon',
+      url:    BASE + 'wpscan-recon/data/sites/wpscan.com.json',
+      format: formatWpscan,
     },
   ];
 
