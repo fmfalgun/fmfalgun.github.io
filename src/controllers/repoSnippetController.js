@@ -152,6 +152,30 @@
     ].join('\n');
   }
 
+  function formatWhatwebRecon(d) {
+    var server  = d.server || '—';
+    var cms     = d.cms    || 'none';
+    var php     = d.php_version || 'none';
+    var xmlrpc  = (d.interesting_plugins || []).indexOf('xmlrpc') !== -1 ? 'EXPOSED ⚠' : 'NO';
+    var results = d.results || [];
+    var first   = results.find(function (r) { return r.http_status >= 200 && r.http_status < 300; }) || results[0] || {};
+    var urlLine = first.url
+      ? (first.url.replace(/^https?:\/\//, '').slice(0, 20).padEnd(20) +
+         '  ' + (first.http_status || '—') +
+         '  ' + (first.server || '—') +
+         (first.jquery_version ? '  jQuery ' + first.jquery_version : ''))
+      : '—';
+
+    return [
+      '$ python3 whatweb-recon.py -d ' + (d.domain || 'nmap.org'),
+      '  server  : ' + server,
+      '  cms     : ' + cms,
+      '  php     : ' + php,
+      '  xmlrpc  : ' + xmlrpc,
+      '  ' + urlLine,
+    ].join('\n');
+  }
+
   // ── project registry ─────────────────────────────────────────────────────────
 
   var BASE = 'https://fmfalgun.github.io/';
@@ -196,6 +220,11 @@
       id:     'snippet-gobuster-recon',
       url:    BASE + 'gobuster-recon/data/targets/nmap.org.json',
       format: formatGobuster,
+    },
+    {
+      id:     'snippet-whatweb-recon',
+      url:    BASE + 'whatweb-recon/data/domains/nmap.org.json',
+      format: formatWhatwebRecon,
     },
   ];
 
