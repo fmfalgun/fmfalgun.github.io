@@ -38,6 +38,8 @@
   border-left: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
   letter-spacing: 0.04em;
+  max-width: 160px;
+  line-height: 1.4;
 }
 
 .home-outline .outline-item a:hover,
@@ -83,7 +85,7 @@
     right: 0;
     background: var(--card);
     border: 1px solid var(--border);
-    min-width: 180px;
+    min-width: 230px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(6px);
