@@ -18,7 +18,9 @@
   color: var(--cream);
   letter-spacing: .15em;
   margin-right: auto;
+  text-decoration: none;
 }
+.nav-logo:hover { color: var(--cream); }
 .nav-logo .accent { color: var(--amber); }
 .nav-links {
   list-style: none;
