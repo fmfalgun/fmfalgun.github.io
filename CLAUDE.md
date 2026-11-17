@@ -54,7 +54,7 @@ Two-level manifest system. Top-level `manifest.json` lists categories with a `ty
 
 ### LIBRARY (`library.html`)
 
-`libraryController.js` fetches `https://fmfalgun.github.io/library/library.json` (the sibling `library` repo's page manifest) and renders one card per entry; each card links to `https://fmfalgun.github.io/library/<file>`. To add a page: add it to `library.json` in the library repo, nothing changes here. Styles are in `assets/css/components/library.css`.
+`libraryController.js` fetches `https://fmfalgun.github.io/library/library.json` (the sibling `library` repo's page manifest) and renders one card per entry; each card links to the library repo's shell, `https://fmfalgun.github.io/library/?page=<name>`, which frames the page in this site's nav bar and footer (the shell loads this site's CSS and `navController.js`). To add a page: add it to the library repo's `pages/` folder; its pre-commit hook adds it to `library.json`. Nothing changes here. Styles are in `assets/css/components/library.css`.
 
 ## CSS
 

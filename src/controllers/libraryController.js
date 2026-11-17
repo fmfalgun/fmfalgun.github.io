@@ -1,8 +1,8 @@
 /**
  * libraryController.js
  * Fills the Library page with one card per page listed in the library repo's
- * library.json. Choosing a card opens that page, which is served by the
- * library repo's GitHub Pages site. A page added to library.json shows up
+ * library.json. Choosing a card opens that page inside the library repo's
+ * shell (index.html), which frames it with this site's nav bar and footer. A page added to library.json shows up
  * here with no change to this repo.
  */
 
@@ -30,14 +30,15 @@ async function fetchPages() {
 }
 
 /**
- * Build one card (a link to the page) from a manifest entry.
+ * Build one card (a link to the page in the shell) from a manifest entry.
+ * The shell takes the page name, which is the file name without `.html`.
  * Text is set with textContent, never as HTML, because the manifest is
  * data from another repo.
  */
 function buildCard(page) {
   const card = document.createElement('a');
   card.className = 'library-card';
-  card.href = `${LIBRARY_BASE}${page.file}`;
+  card.href = `${LIBRARY_BASE}?page=${page.file.replace(/\.html$/, '')}`;
   card.setAttribute('role', 'listitem');
 
   const title = document.createElement('div');
