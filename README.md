@@ -74,17 +74,17 @@ portfolio/
 
 ## OPERATIVES Page (`operatives.html`)
 
-People who built the tools, protocols, and techniques behind security research. Cards loaded dynamically from `data/operatives/` — one JSON file per person, manifest-driven.
+People who built the tools, protocols, and techniques behind security research. Cards are loaded from the [`library-data`](https://github.com/fmfalgun/library-data) repo, which holds every person record; this page shows the records whose `show_on` lists `portfolio`.
 
-→ See [`data/operatives/README.md`](data/operatives/README.md) for file format, manifest structure, and how to add a new person.
+→ See the `library-data` repo's `docs/RECORD_FORMAT.md` for the record format and how to add a person.
 
 ---
 
 ## TOOLKIT Page (`toolkit.html`)
 
-Tools studied in depth, organised by category and phase. Cards are loaded from the [`library-tools`](https://github.com/fmfalgun/library-tools) repo, which holds every tool record; this page shows the records whose `show_on` lists `portfolio`.
+Tools studied in depth, organised by category and phase. Cards are loaded from the [`library-data`](https://github.com/fmfalgun/library-data) repo, which holds every tool record; this page shows the records whose `show_on` lists `portfolio`.
 
-→ See the `library-tools` repo's `docs/RECORD_FORMAT.md` for the record format and how to add a tool.
+→ See the `library-data` repo's `docs/RECORD_FORMAT.md` for the record format and how to add a tool.
 
 ---
 

@@ -1,6 +1,7 @@
 /**
  * operativesController.js
- * Fetches manifest.json, then fetches each person JSON individually,
+ * Fetches the people manifest from the library-data repo, then each person
+ * JSON individually, keeps the records whose show_on lists "portfolio",
  * groups cards by domain, and renders them into collapsible section groups
  * with a sticky outline, search bar, and filter chips.
  *
@@ -8,8 +9,9 @@
  * so we rely on manifest.json to know which files exist.
  */
 
-const MANIFEST_URL = 'data/operatives/manifest.json';
-const DATA_BASE    = 'data/operatives/';
+const DATA_BASE    = 'https://fmfalgun.github.io/library-data/data/people/';
+const MANIFEST_URL = `${DATA_BASE}manifest.json`;
+const SITE_ID      = 'portfolio';
 
 // Canonical domain order for display
 const DOMAIN_ORDER = [
@@ -30,7 +32,8 @@ const DOMAIN_ORDER = [
  */
 async function fetchJSON(url) {
   try {
-    const res = await fetch(url);
+    // no-cache: revalidate with the server so edited records show at once
+    const res = await fetch(url, { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } catch (err) {
@@ -447,7 +450,7 @@ async function initOperatives() {
   );
 
   // Filter out any nulls (failed fetches)
-  const people = results.filter(Boolean);
+  const people = results.filter(Boolean).filter(person => (person.show_on || []).includes(SITE_ID));
 
   if (people.length === 0) {
     sectionsContainer.innerHTML = '<p class="operatives-error">// ERROR: no operative data loaded</p>';

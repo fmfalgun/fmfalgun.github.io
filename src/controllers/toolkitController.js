@@ -11,13 +11,13 @@
  *   - Stats bar updated on filter/search changes
  *
  * Data flow:
- *   library-tools repo: data/manifest.json  (array of filenames)
+ *   library-data repo: data/tools/manifest.json  (array of filenames)
  *     → individual tool JSON files
  *       → keep records whose show_on lists "portfolio"
  *         → group by category, then by phase
  */
 
-const RECORDS_BASE = 'https://fmfalgun.github.io/library-tools/data/';
+const RECORDS_BASE = 'https://fmfalgun.github.io/library-data/data/tools/';
 const SITE_ID      = 'portfolio';
 
 /* ─── Fetch helpers ─────────────────────────────────────────── */
@@ -30,7 +30,7 @@ async function fetchJSON(url) {
 }
 
 /**
- * Fetch every tool record listed in the library-tools manifest and keep the
+ * Fetch every tool record listed in the library-data tools manifest and keep the
  * ones that name this site in show_on. Records that fail to load are skipped.
  */
 async function fetchRecords() {

@@ -44,13 +44,13 @@ Content in `index.html` is **static HTML** (not JS-rendered) — this is intenti
 
 ## Data-driven pages
 
-### OPERATIVES (`data/operatives/`)
+### OPERATIVES (`operatives.html`)
 
-One JSON per person + `manifest.json` (array of filenames). `operativesController.js` reads the manifest, fetches each file, and groups cards by `domain` field. To add a person: create the JSON and add its filename to `manifest.json`.
+`operativesController.js` fetches `https://fmfalgun.github.io/library-data/data/people/manifest.json` (an array of filenames in the sibling `library-data` repo), fetches each person record, keeps those whose `show_on` includes `portfolio`, and groups cards by `domain`. To add a person: add a record to the `library-data` repo with `show_on: ["portfolio"]`; nothing changes here.
 
 ### TOOLKIT (`toolkit.html`)
 
-`toolkitController.js` fetches `https://fmfalgun.github.io/library-tools/data/manifest.json` (an array of filenames in the sibling `library-tools` repo), fetches each record, keeps those whose `show_on` includes `portfolio`, and groups them by `category`, then `phase`. A category whose tools have no `phase` renders as one flat group. To add a tool: add a record to the `library-tools` repo with `show_on: ["portfolio"]`; nothing changes here. The VAPT page in the `library` repo reads the same records (`show_on: ["vapt"]`).
+`toolkitController.js` fetches `https://fmfalgun.github.io/library-data/data/tools/manifest.json` (an array of filenames in the sibling `library-data` repo), fetches each record, keeps those whose `show_on` includes `portfolio`, and groups them by `category`, then `phase`. A category whose tools have no `phase` renders as one flat group. To add a tool: add a record to the `library-data` repo with `show_on: ["portfolio"]`; nothing changes here. The VAPT page in the `library` repo reads the same records (`show_on: ["vapt"]`).
 
 ### LIBRARY (`library.html`)
 
