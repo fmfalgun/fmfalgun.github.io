@@ -48,9 +48,9 @@ Content in `index.html` is **static HTML** (not JS-rendered) — this is intenti
 
 One JSON per person + `manifest.json` (array of filenames). `operativesController.js` reads the manifest, fetches each file, and groups cards by `domain` field. To add a person: create the JSON and add its filename to `manifest.json`.
 
-### TOOLKIT (`data/toolkit/`)
+### TOOLKIT (`toolkit.html`)
 
-Two-level manifest system. Top-level `manifest.json` lists categories with a `type` of `phases` or `flat`. Each phase/flat directory has its own `manifest.json` (plain filename array). Tool JSON files live inside those directories. To add a tool: create the JSON and add to the right sub-manifest.
+`toolkitController.js` fetches `https://fmfalgun.github.io/library-tools/data/manifest.json` (an array of filenames in the sibling `library-tools` repo), fetches each record, keeps those whose `show_on` includes `portfolio`, and groups them by `category`, then `phase`. A category whose tools have no `phase` renders as one flat group. To add a tool: add a record to the `library-tools` repo with `show_on: ["portfolio"]`; nothing changes here. The VAPT page in the `library` repo reads the same records (`show_on: ["vapt"]`).
 
 ### LIBRARY (`library.html`)
 

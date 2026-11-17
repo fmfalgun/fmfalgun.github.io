@@ -11,12 +11,14 @@
  *   - Stats bar updated on filter/search changes
  *
  * Data flow:
- *   data/toolkit/manifest.json
- *     → per-phase or per-category manifest.json  (array of filenames)
- *       → individual tool JSON files
+ *   library-tools repo: data/manifest.json  (array of filenames)
+ *     → individual tool JSON files
+ *       → keep records whose show_on lists "portfolio"
+ *         → group by category, then by phase
  */
 
-const MANIFEST = 'data/toolkit/manifest.json';
+const RECORDS_BASE = 'https://fmfalgun.github.io/library-tools/data/';
+const SITE_ID      = 'portfolio';
 
 /* ─── Fetch helpers ─────────────────────────────────────────── */
 
@@ -26,15 +28,46 @@ async function fetchJSON(url) {
   return res.json();
 }
 
-async function fetchTools(manifestPath) {
-  const filenames = await fetchJSON(manifestPath);
-  const dir = manifestPath.replace(/\/[^/]+$/, '/');
+/**
+ * Fetch every tool record listed in the library-tools manifest and keep the
+ * ones that name this site in show_on. Records that fail to load are skipped.
+ */
+async function fetchRecords() {
+  const filenames = await fetchJSON(RECORDS_BASE + 'manifest.json');
   const results = await Promise.allSettled(
-    filenames.map(f => fetchJSON(dir + f))
+    filenames.map(f => fetchJSON(RECORDS_BASE + f))
   );
   return results
     .filter(r => r.status === 'fulfilled')
-    .map(r => r.value);
+    .map(r => r.value)
+    .filter(tool => (tool.show_on || []).includes(SITE_ID));
+}
+
+/**
+ * Group records into the structure the page renders: categories in order of
+ * first appearance; a category with phased tools gets one group per phase
+ * (sorted by phase name), otherwise it is a single flat group.
+ */
+function buildStructure(records) {
+  const categories = [];
+  for (const tool of records) {
+    let cat = categories.find(c => c.name === tool.category);
+    if (!cat) {
+      cat = { name: tool.category, type: 'flat', phases: [], tools: [] };
+      categories.push(cat);
+    }
+    cat.tools.push(tool);
+    if (!tool.phase) continue;
+    cat.type = 'phases';
+    let phase = cat.phases.find(p => p.name === tool.phase);
+    if (!phase) {
+      phase = { name: tool.phase, tools: [] };
+      cat.phases.push(phase);
+    }
+    phase.tools.push(tool);
+  }
+  categories.forEach(cat => cat.phases.sort((a, b) => a.name.localeCompare(b.name)));
+  return { categories };
 }
 
 /* ─── Rendering ─────────────────────────────────────────────── */
@@ -524,53 +557,25 @@ async function loadToolkit() {
   const sectionsEl = document.getElementById('toolkit-sections');
   if (!sectionsEl) return;
 
-  sectionsEl.innerHTML = `<p class="toolkit-loading">// LOADING TOOLKIT DATA...</p>`;
+  sectionsEl.innerHTML = `<p class="toolkit-loading">// LOADING TOOL DATA...</p>`;
 
-  let manifest;
+  let allTools;
   try {
-    manifest = await fetchJSON(MANIFEST);
+    allTools = await fetchRecords();
   } catch (err) {
-    sectionsEl.innerHTML = `<p class="toolkit-error">// ERROR: Could not load toolkit manifest. ${escapeHtml(err.message)}</p>`;
+    sectionsEl.innerHTML = `<p class="toolkit-error">// ERROR: Could not load tool records. ${escapeHtml(err.message)}</p>`;
     return;
   }
 
-  const allTools = [];
-  const categoryHTMLs = [];
-
-  for (const cat of manifest.categories) {
-    try {
-      if (cat.type === 'phases') {
-        const phaseGroupHTMLs = [];
-        for (const phase of cat.phases) {
-          try {
-            const tools = await fetchTools(phase.manifest);
-            // Stamp category onto tools that might not have it
-            tools.forEach(t => { if (!t.category) t.category = cat.name; });
-            allTools.push(...tools);
-            phaseGroupHTMLs.push(buildPhaseGroup(phase.name, tools, cat.name));
-          } catch (err) {
-            phaseGroupHTMLs.push(
-              `<p class="toolkit-error">// ERROR loading ${escapeHtml(phase.name)}: ${escapeHtml(err.message)}</p>`
-            );
-          }
-        }
-        categoryHTMLs.push(buildCategoryGroup(cat.name, phaseGroupHTMLs.join('\n')));
-
-      } else if (cat.type === 'flat') {
-        const tools = await fetchTools(cat.manifest);
-        tools.forEach(t => { if (!t.category) t.category = cat.name; });
-        allTools.push(...tools);
-        // Flat categories get a single phase group using 'unix' as the phase sentinel
-        const phaseGroupHTML = buildPhaseGroup('unix', tools, cat.name);
-        // Flat categories have no nested category wrapper — just the phase group
-        categoryHTMLs.push(phaseGroupHTML);
-      }
-    } catch (err) {
-      categoryHTMLs.push(
-        `<p class="toolkit-error">// ERROR loading ${escapeHtml(cat.name)}: ${escapeHtml(err.message)}</p>`
-      );
+  const manifest = buildStructure(allTools);
+  const categoryHTMLs = manifest.categories.map(cat => {
+    if (cat.type === 'phases') {
+      const groups = cat.phases.map(phase => buildPhaseGroup(phase.name, phase.tools, cat.name));
+      return buildCategoryGroup(cat.name, groups.join('\n'));
     }
-  }
+    // Flat categories get a single phase group using 'unix' as the phase sentinel
+    return buildPhaseGroup('unix', cat.tools, cat.name);
+  });
 
   sectionsEl.innerHTML = categoryHTMLs.join('\n');
 

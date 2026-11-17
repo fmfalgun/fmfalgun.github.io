@@ -82,9 +82,9 @@ People who built the tools, protocols, and techniques behind security research. 
 
 ## TOOLKIT Page (`toolkit.html`)
 
-Tools studied in depth during web-vapt training, organised by category and phase. Same manifest-driven pattern as OPERATIVES.
+Tools studied in depth, organised by category and phase. Cards are loaded from the [`library-tools`](https://github.com/fmfalgun/library-tools) repo, which holds every tool record; this page shows the records whose `show_on` lists `portfolio`.
 
-→ See [`data/toolkit/README.md`](data/toolkit/README.md) for file format, directory structure, phase assignments, and how to add a new tool.
+→ See the `library-tools` repo's `docs/RECORD_FORMAT.md` for the record format and how to add a tool.
 
 ---
 
