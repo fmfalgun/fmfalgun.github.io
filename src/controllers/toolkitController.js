@@ -23,7 +23,8 @@ const SITE_ID      = 'portfolio';
 /* ─── Fetch helpers ─────────────────────────────────────────── */
 
 async function fetchJSON(url) {
-  const res = await fetch(url);
+  // no-cache: revalidate with the server so edited records show at once, not after Pages' 10-minute cache
+  const res = await fetch(url, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
   return res.json();
 }
