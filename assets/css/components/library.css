@@ -1,0 +1,99 @@
+/* =============================================
+   LIBRARY PAGE
+   Hero and card grid for the list of pages in the library repo.
+   ============================================= */
+
+.library-hero {
+  padding: 10rem 0 5rem;
+  background: var(--black);
+  border-bottom: 1px solid var(--border);
+}
+.library-hero .section-label { margin-bottom: 1.2rem; }
+.library-hero-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: .04em;
+  margin-bottom: 1.2rem;
+}
+.library-hero-intro {
+  font-size: .9rem;
+  color: rgba(232,228,217,.6);
+  line-height: 1.8;
+  max-width: 600px;
+}
+.library-count {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  color: var(--amber);
+  margin-top: 1.5rem;
+}
+
+.library-section { padding: 3rem 0 6rem; }
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.4rem;
+}
+
+/* One clickable card per library page */
+.library-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: border-left-color .2s, background .2s, border-color .2s;
+}
+.library-card:hover,
+.library-card:focus-visible {
+  background: #161A12;
+  border-left-color: var(--cream);
+  border-color: #3A4038;
+}
+.library-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: .03em;
+  margin-bottom: .6rem;
+}
+.library-card-desc {
+  font-size: .82rem;
+  color: rgba(232,228,217,.65);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.library-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: auto;
+}
+.library-card-tag {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--amber);
+  border: 1px solid rgba(212,136,42,.3);
+  padding: .2rem .5rem;
+  border-radius: 2px;
+}
+
+/* Shown when library.json cannot be loaded */
+.library-error {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--khaki);
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .library-hero { padding: 8rem 0 4rem; }
+  .library-grid { grid-template-columns: 1fr; }
+}

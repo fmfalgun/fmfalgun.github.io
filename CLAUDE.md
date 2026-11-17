@@ -20,7 +20,7 @@ ES modules (`type="module"`) require a server — `file://` will fail with CORS 
 
 ## Architecture
 
-Three pages: `index.html` (home), `operatives.html`, `toolkit.html`.
+Four pages: `index.html` (home), `operatives.html`, `toolkit.html`, `library.html`.
 
 Content in `index.html` is **static HTML** (not JS-rendered) — this is intentional for SEO and no-JS users. JS enriches the page after load.
 
@@ -51,6 +51,10 @@ One JSON per person + `manifest.json` (array of filenames). `operativesControlle
 ### TOOLKIT (`data/toolkit/`)
 
 Two-level manifest system. Top-level `manifest.json` lists categories with a `type` of `phases` or `flat`. Each phase/flat directory has its own `manifest.json` (plain filename array). Tool JSON files live inside those directories. To add a tool: create the JSON and add to the right sub-manifest.
+
+### LIBRARY (`library.html`)
+
+`libraryController.js` fetches `https://fmfalgun.github.io/library/library.json` (the sibling `library` repo's page manifest) and renders one card per entry; each card links to `https://fmfalgun.github.io/library/<file>`. To add a page: add it to `library.json` in the library repo, nothing changes here. Styles are in `assets/css/components/library.css`.
 
 ## CSS
 
