@@ -1,0 +1,38 @@
+{
+  "name": "Falgun Marothia",
+  "site_url": "https://fmfalgun.github.io",
+  "email": "fmfalgunmarothia@gmail.com",
+  "github": "https://github.com/fmfalgun",
+  "linkedin": "https://www.linkedin.com/in/falgun-marothia-52a383191/",
+  "base": "Chennai, Tamil Nadu",
+  "origin": "Kishangarh, Ajmer, Rajasthan",
+  "hud_location": "CHENNAI // INDIA",
+  "focus": "Wireless IoT Security + ML",
+  "education": {
+    "short": "M.Tech Cybersecurity — DIAT",
+    "degree": "M.Tech in Cybersecurity",
+    "org": "DIAT (Defence Institute of Advanced Technology), Pune",
+    "org_ld": "Defence Institute of Advanced Technology (DIAT), Pune"
+  },
+  "research_line": "specialising in IoT wireless security research",
+  "positions": [
+    {
+      "id": "cdac-project-engineer",
+      "org_short": "CDAC",
+      "org_full": "Centre for Development of Advanced Computing",
+      "title": "Project Engineer",
+      "start": "2025-07",
+      "end": "2026-08",
+      "summary": "working on IoT wireless security research under a Zero Trust / microsegmentation framework"
+    },
+    {
+      "id": "sets-project-associate-2",
+      "org_short": "SETS",
+      "org_full": "Society for Electronic Transactions and Security",
+      "title": "Project Associate - II",
+      "start": "2026-09",
+      "end": null,
+      "summary": null
+    }
+  ]
+}

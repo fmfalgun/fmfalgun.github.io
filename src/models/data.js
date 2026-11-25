@@ -1,15 +1,3 @@
-export const meta = {
-  name: 'Falgun Marothia',
-  title: 'Project Engineer, CDAC',
-  location: 'Chennai, Tamil Nadu',
-  origin: 'Kishangarh, Ajmer, Rajasthan',
-  email: 'fmfalgunmarothia@gmail.com',
-  github: 'https://github.com/fmfalgun',
-  linkedin: 'https://www.linkedin.com/in/falgun-marothia-52a383191/',
-  resume: 'falgun_resume.pdf',
-  siteUrl: 'https://fmfalgun.github.io',
-};
-
 export const projects = [
   {
     id: 'ble-monitor',

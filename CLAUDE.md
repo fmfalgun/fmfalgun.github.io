@@ -56,6 +56,10 @@ Content in `index.html` is **static HTML** (not JS-rendered) — this is intenti
 
 `libraryController.js` fetches `https://fmfalgun.github.io/library/library.json` (the sibling `library` repo's page manifest) and renders one card per entry; each card links to the library repo's shell, `https://fmfalgun.github.io/library/?page=<name>`, which frames the page in this site's nav bar and footer (the shell loads this site's CSS and `navController.js`). To add a page: add it to the library repo's `pages/` folder; its pre-commit hook adds it to `library.json`. Nothing changes here. Styles are in `assets/css/components/library.css`.
 
+## Profile data (role, employer, location)
+
+`data/profile.json` is the single source for the current role and job history (`positions`; exactly one has `end: null`). `scripts/render_profile.py` writes it into the `<!-- BEGIN:name --> … <!-- END:name -->` blocks of `index.html` (meta descriptions, JSON-LD, hero eyebrow, HUD location, About paragraph, FIELD DATA rows), so the page stays static HTML for crawlers. To change job: end the old position (set `end`), add a new one with `end: null`, run `python3 scripts/render_profile.py` and commit both files. `--check` reports a stale page. `falgun_resume.pdf` is not generated and must be replaced by hand.
+
 ## CSS
 
 Design tokens live in `assets/css/base/variables.css`. Component styles are split into `assets/css/components/`. The terminal/hacker aesthetic uses `Share Tech Mono` for monospace elements and CSS variables `--color-accent`, `--bg-primary`, etc.
